@@ -1,12 +1,12 @@
 PyYAML~=6.0.3
-requests~=2.32.5
+requests~=2.33.0
 Flask~=3.1.2
 celery        # you will need to check your Celery version — not pinned here
 redis         # same for redis
 faker~=23.0.0  # or leave unpinned to get latest
 hypothesis
 openapi-spec-validator~=0.7.2
-python-dotenv~=1.1.1
+python-dotenv~=1.2.2
 Flask-Cors  # latest stable
 Flask-SQLAlchemy~=3.1.1
 Werkzeug~=3.1.0
