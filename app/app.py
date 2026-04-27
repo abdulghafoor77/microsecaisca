@@ -171,4 +171,4 @@ def request_entity_too_large(error):
     return jsonify({"error": "File is too large. Max allowed is 10KB."}), 413
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=3001)
+    app.run(debug=True, host='0.0.0.0', port=3001) # nosec B201

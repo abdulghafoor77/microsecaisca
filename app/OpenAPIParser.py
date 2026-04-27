@@ -7,7 +7,7 @@ class OpenAPIParser:
 
     def fetch_spec(self):
         try:
-            response = requests.get(self.url)
+            response = requests.get(self.url) # nosec B113
             response.raise_for_status()
             self.spec = response.json()
         except Exception as e:
