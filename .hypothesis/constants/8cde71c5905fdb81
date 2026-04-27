@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/PostmanFuzzer.py
+# hypothesis_version: 6.138.2
+
+[-2147483648, -999999999, 1000, 999999999, 2147483647, '/', 'A', '__main__', 'application/json', 'array', 'body', 'boolean', 'content', 'header', 'host', 'in', 'info', 'integer', 'item', 'items', 'json', 'key', 'language', 'method', 'mode', 'name', 'number', 'object', 'openapi.json', 'options', 'parameters', 'path', 'paths', 'properties', 'query', 'r', 'raw', 'request', 'requestBody', 'schema', 'servers', 'string', 'type', 'url', 'utf-8', 'value', 'w', '{{baseUrl}}', '{}', '🔥💀🚀']

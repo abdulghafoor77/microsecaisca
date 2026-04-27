@@ -1,0 +1,388 @@
+{
+      "name": "Export Report - Valid Token & Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id_valid}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Invalid ID (String)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/invalid_string",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "invalid_string"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Invalid ID (Negative Number)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/-1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "-1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & ID as 0 (Boundary Value)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "0"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Large ID (Boundary Value)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/9223372036854775807",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "9223372036854775807"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Special Characters in ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/%24%26%3F%23",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "$&?#"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Empty ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Invalid Token & Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id_valid}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - No Token & Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id_valid}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & ID Not Owned by User (BOLA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_not_owned}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id_not_owned}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & ID with SQL Injection Attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/1%20OR%201%3D1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "1 OR 1=1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & ID with Path Traversal Attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/..%2F..%2Fetc%2Fpasswd",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "../..etc/passwd"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & Float ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/1234.56",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "1234.56"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export Report - Valid Token & JavaScript Code in ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "<script>alert(1)</script>"
+          ]
+        }
+      }
+    }
+  ],
+  "event": [

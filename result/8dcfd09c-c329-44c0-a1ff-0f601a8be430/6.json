@@ -1,0 +1,399 @@
+{
+      "name": "Export All Medical Reports - No Auth (API1, API8)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        },
+        "description": "Test endpoint without authentication header."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Medical Reports - Invalid Auth Token (API1, API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        },
+        "description": "Test endpoint with an invalid authentication token."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Medical Reports - Valid Auth Token (API1)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        },
+        "description": "Test endpoint with a valid authentication token."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Path Fuzzing (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all%25%20%2F%2E%2E",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all%25%20%2F%2E%2E"
+          ]
+        },
+        "description": "Path fuzzing with URL-encoded payloads to test for security misconfiguration."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Large Query String (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?extra=" + "A".repeat(10000),
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "extra",
+              "value": "A".repeat(10000)
+            }
+          ]
+        },
+        "description": "Large query string to test for input validation and buffer overflow."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - SQL Injection (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?filter=' OR 1=1 --",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "' OR 1=1 --"
+            }
+          ]
+        },
+        "description": "SQL injection attempt in query parameter."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - XSS Injection (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?filter=<script>alert('xss')</script>",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "filter",
+              "value": "<script>alert('xss')</script>"
+            }
+          ]
+        },
+        "description": "XSS payload in query parameter."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Negative Numbers and Special Characters (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportId=-999999999&patientId=!@#$%^&*()",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "reportId",
+              "value": "-999999999"
+            },
+            {
+              "key": "patientId",
+              "value": "!@#$%^&*()"
+            }
+          ]
+        },
+        "description": "Negative numbers and special characters as query parameters."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Empty Values (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportId=&patientName=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "reportId",
+              "value": ""
+            },
+            {
+              "key": "patientName",
+              "value": ""
+            }
+          ]
+        },
+        "description": "Empty values to test for input handling."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Special Characters in Headers (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "X-Fuzz",
+            "value": "!@#$%^&*()_+-=[]{}|;:'\",.<>/?`~",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        },
+        "description": "Special characters in custom header."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Unrestricted Access to Sensitive Business Flow (API6)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?admin=true",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "admin",
+              "value": "true"
+            }
+          ]
+        },
+        "description": "Attempt to access admin-only flow via query parameter."
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Property Level Authorization Bypass (API3)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?fields=reportId,patientId,patientName,gender,dateOfBirth,bloodGroup,doctorId,doctorName,department,reportDate,reportType,diagnosisSummary,weight,height,pulseRate,bloodPressureSystolic,bloodPressureDiastolic,bodyTemperature,prescribedMedications,lifestyleAdvice,createdAt,updatedAt",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "fields",
+              "value": "reportId,patientId,patientName,gender,dateOfBirth,bloodGroup,doctorId,doctorName,department,reportDate,reportType,diagnosisSummary,weight,height,pulseRate,bloodPressureSystolic,bloodPressureDiastolic,bodyTemperature,prescribedMedications,lifestyleAdvice,createdAt,updatedAt"
+            }
+          ]
+        },
+        "description": "Request all properties, including PII, via fields parameter."
+      },
+      "response": []
+    }
+  ],
+  "event": [

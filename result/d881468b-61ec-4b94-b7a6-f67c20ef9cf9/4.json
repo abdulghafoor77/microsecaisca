@@ -1,0 +1,403 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?id={{other_user_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{other_user_id}}"
+            }
+          ]
+        },
+        "description": "Attempt to export reports using another user's id."
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ]
+        },
+        "description": "No authentication token provided."
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ]
+        },
+        "description": "Invalid authentication token provided."
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Attempt to Export Unredacted",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?fields=sensitive_field1,sensitive_field2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "fields",
+              "value": "sensitive_field1,sensitive_field2"
+            }
+          ]
+        },
+        "description": "Attempt to export with explicit sensitive fields requested."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Large Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=1000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1000000"
+            }
+          ]
+        },
+        "description": "Request extremely large CSV export."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Negative Limit",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=-100",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "-100"
+            }
+          ]
+        },
+        "description": "Send negative limit value."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Special Characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=%40%23%24%25%5E%26*()",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "@#$%^&*()"
+            }
+          ]
+        },
+        "description": "Send special characters in limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Disallowed Export Type",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?exportType=raw",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "exportType",
+              "value": "raw"
+            }
+          ]
+        },
+        "description": "Attempt to export raw (unredacted) reports using exportType param."
+      },
+      "response": []
+    },
+    {
+      "name": "API6:2023 - Unrestricted Access to Sensitive Business Flows",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?flow=admin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "flow",
+              "value": "admin"
+            }
+          ]
+        },
+        "description": "Attempt to use admin flow as a regular user."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Empty Query Params",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": ""
+            }
+          ]
+        },
+        "description": "Send empty value for limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Invalid Data Types",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=abc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "abc"
+            }
+          ]
+        },
+        "description": "Send string value for integer limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Extremely Small/Zero Limit",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "0"
+            }
+          ]
+        },
+        "description": "Send zero value for limit param."
+      },
+      "response": []
+    }
+  

@@ -1,0 +1,4 @@
+# file: /usr/lib/python3/dist-packages/pkg_resources/_vendor/packaging/markers.py
+# hypothesis_version: 6.138.2
+
+['!=', '"', "'", '(', ')', '.', '<', '<=', '==', '===', '>', '>=', 'InvalidMarker', 'Marker', 'UndefinedComparison', 'and', 'default_environment', 'extra', 'final', 'implementation_name', 'in', 'not in', 'or', 'os.name', 'os_name', 'platform.machine', 'platform.version', 'platform_machine', 'platform_release', 'platform_system', 'platform_version', 'python_full_version', 'python_version', 'sys._version_info', 'sys.platform', 'sys_platform', '~=']

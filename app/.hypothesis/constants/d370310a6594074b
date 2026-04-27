@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/JSONHandler.py
+# hypothesis_version: 6.138.2
+
+['\nSummary:', '        }', '    let result = [];', '    }', '"', '", ', '"?,\\s*"', '"item"', ',', ',\\s*(?="?\\w+"\\s*:)', ',\\s*([}])', ':', 'Literal eval failed:', 'Parsing failed:', '[', '\\"', '\\1', ']', '__main__', 'error', 'exec', 'index', 'listen', 'object', 'packages', 'prerequest', 'r', 'randomString', 'requests', 'script', 'text/javascript', 'type', 'utf-8', 'w', '{', '}']

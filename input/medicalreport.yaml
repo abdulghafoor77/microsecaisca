@@ -1,0 +1,547 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Demo REST API",
+        "description": "Spring Boot API with public and protected endpoints documented using OpenAPI 3.",
+        "contact": {
+            "name": "API Support",
+            "url": "https://example.com",
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://springdoc.org"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local Server"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "Medical Report Vulnerabiliuty Demo",
+            "description": "Most of othese enpoints are generic and may not be safe "
+        }
+    ],
+    "paths": {
+        "/v1/medical/report/store": {
+            "post": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "Store report (sanitized)",
+                "description": "Sanitize inputs before persisting.",
+                "operationId": "storeSafe",
+                "requestBody": {
+                    "description": "MedicalReport JSON",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MedicalReport"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Saved sanitized report",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/demo/reports/{id}": {
+            "get": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: Get report by ID (no authorization)",
+                "description": "Anyone can access any report by changing the ID.",
+                "operationId": "getReportVulnerable",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to fetch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Report fetched successfully",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Report not found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: Update report without ownership check",
+                "description": "Any authenticated or unauthenticated user can update any report by ID.",
+                "operationId": "updateVuln",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the report to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Updated report object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MedicalReport"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Report updated successfully",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Report not found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demo/vuln/report/{id}": {
+            "get": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: Get report (no auth)",
+                "description": "Return report without ownership check.",
+                "operationId": "getReportVuln",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Report ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demo/vuln/export-csv": {
+            "get": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: CSV export (no CSV injection mitigation)",
+                "description": "Exports a single report as CSV without cell sanitization.",
+                "operationId": "exportCsvVuln",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "report id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CSV",
+                        "content": {
+                            "text/csv": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/demo/export-all": {
+            "get": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: Export all (Sensitive Data Exposure)",
+                "description": "Returns all database rows, potentially leaking PII.",
+                "operationId": "exportAllVuln",
+                "responses": {
+                    "200": {
+                        "description": "List of all medical reports",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MedicalReport"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/demo/count": {
+            "get": {
+                "tags": [
+                    "Medical Report Vulnerabiliuty Demo"
+                ],
+                "summary": "VULN: Count reports by patientId (no authorization)",
+                "description": "Returns the count of reports for any patientId parameter — allows info disclosure or inference attacks.",
+                "operationId": "countByPatientVuln",
+                "parameters": [
+                    {
+                        "name": "patientId",
+                        "in": "query",
+                        "description": "Patient ID to count reports for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number of reports matching the patientId",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int64"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "MedicalReport": {
+                "type": "object",
+                "properties": {
+                    "reportId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "patientId": {
+                        "type": "string"
+                    },
+                    "patientName": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "dateOfBirth": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "bloodGroup": {
+                        "type": "string"
+                    },
+                    "doctorId": {
+                        "type": "string"
+                    },
+                    "doctorName": {
+                        "type": "string"
+                    },
+                    "department": {
+                        "type": "string"
+                    },
+                    "reportDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "reportType": {
+                        "type": "string"
+                    },
+                    "diagnosisSummary": {
+                        "type": "string"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "height": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pulseRate": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureSystolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureDiastolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bodyTemperature": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "prescribedMedications": {
+                        "type": "string"
+                    },
+                    "lifestyleAdvice": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "UpdateUserDTO": {
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "example": "NewPassword@123"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "ADMIN"
+                    }
+                },
+                "description": "Fields allowed to update (password plaintext if provided)"
+            },
+            "UserDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "alice"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "USER"
+                    }
+                },
+                "description": "User data returned by the API (password omitted)"
+            },
+            "CreateUserDTO": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "example": "alice"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "Password@123"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "USER"
+                    }
+                },
+                "description": "Payload to create a user (plaintext password supplied here)"
+            },
+            "PageUserDTO": {
+                "type": "object",
+                "properties": {
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/PageableObject"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserDTO"
+                        }
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortObject"
+                        }
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageableObject": {
+                "type": "object",
+                "properties": {
+                    "paged": {
+                        "type": "boolean"
+                    },
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortObject"
+                        }
+                    },
+                    "unpaged": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "SortObject": {
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "nullHandling": {
+                        "type": "string"
+                    },
+                    "ascending": {
+                        "type": "boolean"
+                    },
+                    "property": {
+                        "type": "string"
+                    },
+                    "ignoreCase": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT Bearer token authentication",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

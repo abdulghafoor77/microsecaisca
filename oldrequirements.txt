@@ -1,0 +1,15 @@
+openai~=1.70.0
+pyyaml~=6.0
+requests
+flask
+celery
+redis
+faker
+hypothesis
+openapi-spec-validator
+python-dotenv
+flask-cors
+flask-sqlalchemy
+werkzeug
+
+

@@ -1,0 +1,398 @@
+{
+      "name": "API1: Broken Object Level Authorization - Access Other User's Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{other_user_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{other_user_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Access Own Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Invalid Type in ID (String)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/invalidString",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "invalidString"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Negative ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/-1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "-1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Zero ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/0",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "0"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Very Large ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/999999999999999999",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "999999999999999999"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1: Broken Object Level Authorization - Special Characters in ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/%40%23%24%25%5E%26*",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "@#$%^&*"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API3: Broken Object Property Level Authorization - Check Sensitive Properties Returned",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API5: Broken Function Level Authorization - Use Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API5: Broken Function Level Authorization - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API6: Unrestricted Access to Sensitive Business Flows - Try Exporting Report of Other User With Valid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{other_user_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{other_user_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API8: Security Misconfiguration - OPTIONS Method",
+      "request": {
+        "method": "OPTIONS",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API8: Security Misconfiguration - HEAD Method",
+      "request": {
+        "method": "HEAD",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "API8: Security Misconfiguration - GET with Extra Headers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "127.0.0.1",
+            "type": "text"
+          },
+          {
+            "key": "X-Original-URL",
+            "value": "/v1/medical/report/export/{{own_report_id}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{own_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case: Empty ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            ""
+          ]
+        }
+      }
+    }
+  

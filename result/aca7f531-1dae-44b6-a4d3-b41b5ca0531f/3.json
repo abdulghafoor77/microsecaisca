@@ -1,0 +1,337 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization",
+      "item": [
+        {
+          "name": "Access own report (valid)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "{{own_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Access another user's report (should be forbidden)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/{{other_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "{{other_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Access with invalid token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{invalid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "{{own_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "No authentication token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/{{own_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "{{own_report_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration",
+      "item": [
+        {
+          "name": "Invalid report ID type (string)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/badstringid",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "badstringid"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID with special characters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/%3Cscript%3Ealert('xss')%3C/script%3E",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "<script>alert('xss')</script>"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID with very large number",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/999999999999999999999999999999",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "999999999999999999999999999999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID with negative number",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/-123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "-123"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID is empty",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                ""
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API7:2023 - Server Side Request Forgery",
+      "item": [
+        {
+          "name": "Report ID as SSRF payload (URL)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/http://169.254.169.254/latest/meta-data/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "http://169.254.169.254/latest/meta-data/"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID as SSRF payload (localhost)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/127.0.0.1:22",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "127.0.0.1:22"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Report ID as SSRF payload (%2Fetc%2Fpasswd)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export/%2Fetc%2Fpasswd",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export",
+                "/etc/passwd"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [

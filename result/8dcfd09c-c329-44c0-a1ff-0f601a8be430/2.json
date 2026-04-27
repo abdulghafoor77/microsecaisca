@@ -1,0 +1,431 @@
+{
+      "name": "Find Reports - Valid & Invalid Auth",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patient_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patient_id_valid}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Reports - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patient_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patient_id_valid}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Reports - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patient_id_valid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patient_id_valid}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "BOLA: Access Another User's Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patient_id_other}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patient_id_other}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Property Level Auth: Wildcard PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%25",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "%25"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Property Level Auth: SQL Injection Payload",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=' OR '1'='1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "' OR '1'='1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case: Empty PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case: Special Characters PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%40%23%24%25%5E%26*()_%2B",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "%40%23%24%25%5E%26*()_%2B"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case: Numeric PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=12345678901234567890",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "12345678901234567890"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case: Negative Numeric PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=-9999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "-9999999"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case: Long String PID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sensitive Business Flow: Automated Enumeration",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patient_id_enumeration}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patient_id_enumeration}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Security Misconfiguration: No Auth Header, Wildcard PID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%25",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "%25"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  

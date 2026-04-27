@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/pydevd_plugins/django_debug.py
+# hypothesis_version: 6.138.2
+
+['<unknown source>', 'BaseContext', 'Django Template', 'IncludeNode', 'Node', 'NodeList', 'Source is None\n', 'Source name is %s\n', 'Template', 'TemplateDoesNotExist', 'TemplateSyntaxError', 'TextNode', 'Variable', 'VariableDoesNotExist', '__name__', '_render', '_resolve_lookup', 'call', 'context', 'django', 'django-line', 'django.template.base', 'django_breakpoints', 'django_stop', 'exception', 'find_template', 'get_template', 'ignore_failures', 'line', 'lineno', 'load_template', 'name', 'origin', 'r', 'render', 'replace', 'resolve', 'return', 'self', 'source', 'template', 'token', 'utf-8']

@@ -1,0 +1,149 @@
+{
+      "name": "Export All - No Auth (API8: Security Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Invalid Token (API8: Security Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{invalid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Valid Token (API1: Broken Object Level Authorization)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{valid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Valid Token, Expecting Overexposed Properties (API3: Broken Object Property Level Auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{valid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Valid Token, Edge Case Property Values (API8: Security Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{valid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportId=-9999999999&patientId=%20%00%20&patientName=%3Cscript%3Ealert('x')%3C%2Fscript%3E&bloodGroup=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            { "key": "reportId", "value": "-9999999999" },
+            { "key": "patientId", "value": " %00 " },
+            { "key": "patientName", "value": "<script>alert('x')</script>" },
+            { "key": "bloodGroup", "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" }
+          ]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Unrestricted Sensitive Business Flow (API6: Unrestricted Access to Sensitive Business Flows)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{valid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?includePII=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            { "key": "includePII", "value": "true" }
+          ]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Function Level Authorization (API5: Broken Function Level Authorization)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{low_priv_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "event": []
+    },
+    {
+      "name": "Export All - Large Query Values (API8: Security Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{valid_token}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?patientName=" + "A".repeat(10000),
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            { "key": "patientName", "value": "A".repeat(10000) }
+          ]
+        }
+      },
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [

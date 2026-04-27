@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_additional_thread_info_regular.py
+# hypothesis_version: 6.138.2
+
+['.invalid.', 'additional_info', 'is_tracing', 'pydev_func_name', 'pydev_message', 'pydev_next_line', 'pydev_notify_kill', 'pydev_state', 'pydev_step_cmd', 'pydev_step_stop', 'suspend_type', 'thread_tracer', 'trace', 'trace_suspend_type']

@@ -1,0 +1,406 @@
+{
+      "name": "Find Reports - Valid Token & Valid pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{valid_pid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{valid_pid}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Invalid pid (Special Chars)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%22%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "\"<script>alert(1)</script>"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Empty pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Numeric pid (Edge: Large Number)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=9999999999999999999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "9999999999999999999999999"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Numeric pid (Edge: Negative Number)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=-100",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "-100"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & SQL Injection Attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=1%27%20OR%201%3D1--",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "1' OR 1=1--"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Path Traversal Attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=../../etc/passwd",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "../../etc/passwd"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & Unicode Characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%E2%98%83%E2%9C%94%F0%9F%98%8A",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "☃✔😊"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Valid Token & HTML Entities",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%26lt%3Bscript%26gt%3Balert%281%29%26lt%3B%2Fscript%26gt%3B",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "&lt;script&gt;alert(1)&lt;/script&gt;"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{valid_pid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{valid_pid}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{valid_pid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{valid_pid}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Find Reports - Security Misconfiguration (Extra Headers)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "127.0.0.1",
+            "type": "text"
+          },
+          {
+            "key": "X-Original-URL",
+            "value": "/etc/passwd",
+            "type": "text"
+          },
+          {
+            "key": "X-Custom-Test",
+            "value": "test",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{valid_pid}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{valid_pid}}"
+            }
+          ]
+        }
+      }
+    }
+  

@@ -1,0 +1,897 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "RISE VMC VC Issuance API",
+        "description": "To manage VC Issuance and downloading. This is authenticated service so only the authenticated Holder or Issuer role can perform exposed services. Contact <b>abdul.ghafoor@ri.se</b> for more information",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://mikromeriter.testyta.se:9194",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/v1/vc/holder/credential/linkedin/bydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "getData4Linkedin",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/qrcode/bydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "downloadQRCode",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/bydocumentid/{id}": {
+            "delete": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "deleteIssuedVCByDocumentid",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/holder/credentials/owner": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "listMYCredentials",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/holder/credentials/owner/pnr": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "listMYCredentialsByPNR",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/download/pdfbydocumentid/v2/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "downloadIssuedVCPDFByDocumentidV2",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/download/pdfbydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "downloadIssuedVCPDFByDocumentid",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/verifier/credential/download/pdfbydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "downloadIssuedVCPDFByDocumentidVerifier",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/verify/bydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "verifyByDocumentid",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/holder/credential/download/elm/{id}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "downloadIssuedVCELM",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/integrator/credential": {
+            "post": {
+                "tags": [
+                    "vc-integrator-controller"
+                ],
+                "operationId": "requestVV2C",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IntegratorDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/log": {
+            "get": {
+                "tags": [
+                    "mvc-issuance-vc-log-controller"
+                ],
+                "operationId": "log",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/aggdisplay": {
+            "get": {
+                "tags": [
+                    "aggregated-data-admin"
+                ],
+                "operationId": "downloadIssuedVCPDFByDocumentid_1",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/credential/fetch/bydocid/{id}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "fetchIssuedVCByID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/issuedbyme": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listIssuerCredentials",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/byorg/{org}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listAllCredentialsByOrganization",
+                "parameters": [
+                    {
+                        "name": "org",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/credential/download/elm/{id}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "downloadIssuedVC",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credential/list": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "fetchListIssuedVC",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credential": {
+            "post": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "requestVV2C_1",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IssueAttributeBasedVCDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/total/number": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "getTotalCount",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/count/byversion/{id}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listAllCredentialsByTemplateIdCount",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/count/byorg/{org}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listAllCredentialsByOrganizationCount",
+                "parameters": [
+                    {
+                        "name": "org",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/count/issuedbyme": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listIssuerCredentialsCount",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/byversion/{id}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "listAllCredentialsByTemplateId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credentials/export/byorg/{org}": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "exportAllCredentialsByOrganization",
+                "parameters": [
+                    {
+                        "name": "org",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/old/credential": {
+            "post": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "requestVC",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IssueAttributeBasedVCDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/admin/guest/user/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "deleteGuest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/list/guest/user": {
+            "get": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "getGuestUserList",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/admin/guest/user/update": {
+            "put": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "updateGuest",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuestUserUpdateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "IntegratorDTO": {
+                "type": "object",
+                "properties": {
+                    "issuedTo": {
+                        "type": "array",
+                        "properties": {
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/IssueToDTO"
+                        }
+                    },
+                    "attributesList": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "templateVersionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "kpsecret": {
+                        "type": "string"
+                    },
+                    "authType": {
+                        "type": "string"
+                    },
+                    "kpidentifier": {
+                        "type": "string"
+                    }
+                }
+            },
+            "IssueToDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "personNumber": {
+                        "type": "string"
+                    },
+                    "userFullName": {
+                        "type": "string"
+                    },
+                    "issueDate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "IssueAttributeBasedVCDTO": {
+                "type": "object",
+                "properties": {
+                    "issuedTo": {
+                        "type": "array",
+                        "properties": {
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/IssueToDTO"
+                        }
+                    },
+                    "attributesList": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "templateVersionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GuestUserUpdateDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
+

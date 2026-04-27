@@ -1,0 +1,428 @@
+{
+      "name": "Deserialization - Valid JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Missing Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Large Numbers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": 999999999999999999999999, \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Negative Numbers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": -12345, \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Empty Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Binary Data (Insecure Deserialization)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "\u0000\u0001\u0002\u0003\u0004\u0005"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Special Characters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"!@#$%^&*()_+-=\", \"report\": \"<script>alert(1)</script>\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Invalid JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{patientId: 12345, report: Normal}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Excessively Large Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"" + "A".repeat(1000000) + "\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Missing Required Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Unauthorized Property Access",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"admin\": true, \"report\": \"Normal\"}"
+        }
+      }
+    }
+  

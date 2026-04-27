@@ -1,0 +1,3435 @@
+{
+      "name": "API1: Broken Object Level Authorization - Patient ID Tampering",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{other_patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 70,\n  \"height\": 175,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Maintain diet\",\n  \"createdAt\": \"2024-06-01T12:00:00Z\",\n  \"updatedAt\": \"2024-06-01T12:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "API2: Broken Authentication - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Jane Doe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1988-12-12\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Alice\",\n  \"department\": \"Neurology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"MRI Scan\",\n  \"diagnosisSummary\": \"No issues\",\n  \"weight\": 60,\n  \"height\": 165,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 118,\n  \"bloodPressureDiastolic\": 78,\n  \"bodyTemperature\": 36.8,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Regular sleep\",\n  \"createdAt\": \"2024-06-01T13:00:00Z\",\n  \"updatedAt\": \"2024-06-01T13:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "API3: Broken Object Property Level Authorization - Overwrite Doctor Info",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Eve Mallory\",\n  \"gender\": \"other\",\n  \"dateOfBirth\": \"1975-04-25\",\n  \"bloodGroup\": \"B+\",\n  \"doctorId\": \"admin\",\n  \"doctorName\": \"Hacker\",\n  \"department\": \"Oncology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Lab Result\",\n  \"diagnosisSummary\": \"N/A\",\n  \"weight\": 65,\n  \"height\": 160,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 140,\n  \"bloodPressureDiastolic\": 90,\n  \"bodyTemperature\": 38.0,\n  \"prescribedMedications\": \"Chemo\",\n  \"lifestyleAdvice\": \"Rest\",\n  \"createdAt\": \"2024-06-01T14:00:00Z\",\n  \"updatedAt\": \"2024-06-01T14:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "API4: Unrestricted Resource Consumption - Large Payload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"***_-START_ACME_SCRIPT_HERE-_***100000***_-END_ACME_SCRIPT_HERE-_***\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"***_-START_ACME_SCRIPT_HERE-_***100000***_-END_ACME_SCRIPT_HERE-_***\",\n  \"weight\": 70,\n  \"height\": 175,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"***_-START_ACME_SCRIPT_HERE-_***100000***_-END_ACME_SCRIPT_HERE-_***\",\n  \"lifestyleAdvice\": \"***_-START_ACME_SCRIPT_HERE-_***100000***_-END_ACME_SCRIPT_HERE-_***\",\n  \"createdAt\": \"2024-06-01T12:00:00Z\",\n  \"updatedAt\": \"2024-06-01T12:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "API5: Broken Function Level Authorization - Privileged Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Bob Operator\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1992-11-11\",\n  \"bloodGroup\": \"AB+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Operator\",\n  \"department\": \"Admin\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Privileged Operation\",\n  \"diagnosisSummary\": \"Can escalate\",\n  \"weight\": 75,\n  \"height\": 180,\n  \"pulseRate\": 60,\n  \"bloodPressureSystolic\": 110,\n  \"bloodPressureDiastolic\": 70,\n  \"bodyTemperature\": 36.0,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"None\",\n  \"createdAt\": \"2024-06-01T15:00:00Z\",\n  \"updatedAt\": \"2024-06-01T15:00:00Z\",\n  \"isAdmin\": true\n}"
+        }
+      }
+    },
+    {
+      "name": "API6: Unrestricted Access to Sensitive Business Flows - Backdated Report",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Alice Sensitive\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1980-05-05\",\n  \"bloodGroup\": \"O-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Sensitive\",\n  \"department\": \"Special\",\n  \"reportDate\": \"1900-01-01\",\n  \"reportType\": \"Sensitive Backdate\",\n  \"diagnosisSummary\": \"Sensitive operation\",\n  \"weight\": -99999,\n  \"height\": 99999,\n  \"pulseRate\": 0,\n  \"bloodPressureSystolic\": -1,\n  \"bloodPressureDiastolic\": -1,\n  \"bodyTemperature\": 1000.0,\n  \"prescribedMedications\": \"<script>alert('x')</script>\",\n  \"lifestyleAdvice\": \"DROP TABLE reports;--\",\n  \"createdAt\": \"1900-01-01T00:00:00Z\",\n  \"updatedAt\": \"1900-01-01T00:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case: All Null/Empty Values",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"\",\n  \"patientName\": null,\n  \"gender\": \"\",\n  \"dateOfBirth\": null,\n  \"bloodGroup\": \"\",\n  \"doctorId\": \"\",\n  \"doctorName\": null,\n  \"department\": \"\",\n  \"reportDate\": null,\n  \"reportType\": \"\",\n  \"diagnosisSummary\": null,\n  \"weight\": null,\n  \"height\": null,\n  \"pulseRate\": null,\n  \"bloodPressureSystolic\": null,\n  \"bloodPressureDiastolic\": null,\n  \"bodyTemperature\": null,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": null,\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case: Special Characters & Invalid Types",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"!@#$%^&*()_+|~=`{}[]:\\\";'<>?,./\",\n  \"patientName\": 12345,\n  \"gender\": \"<b>male</b>\",\n  \"dateOfBirth\": \"not-a-date\",\n  \"bloodGroup\": 9999,\n  \"doctorId\": {},\n  \"doctorName\": [],\n  \"department\": false,\n  \"reportDate\": \"2024-02-30\", \n  \"reportType\": \"<script>alert('test')</script>\",\n  \"diagnosisSummary\": \"SELECT * FROM users;\",\n  \"weight\": \"heavy\",\n  \"height\": \"tall\",\n  \"pulseRate\": \"fast\",\n  \"bloodPressureSystolic\": \"high\",\n  \"bloodPressureDiastolic\": \"low\",\n  \"bodyTemperature\": \"hot\",\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"None\",\n  \"createdAt\": \"not-a-date-time\",\n  \"updatedAt\": \"not-a-date-time\"\n}"
+        }
+      }
+    }
+  ,{
+      "name": "Deserialization - Valid JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Missing Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Large Numbers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": 999999999999999999999999, \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Negative Numbers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": -12345, \"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Empty Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Binary Data (Insecure Deserialization)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "\u0000\u0001\u0002\u0003\u0004\u0005"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Special Characters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"!@#$%^&*()_+-=\", \"report\": \"<script>alert(1)</script>\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Invalid JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{patientId: 12345, report: Normal}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Excessively Large Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"report\": \"***_-START_ACME_SCRIPT_HERE-_***1000000***_-END_ACME_SCRIPT_HERE-_***\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Missing Required Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"report\": \"Normal\"}"
+        }
+      }
+    },
+    {
+      "name": "Deserialization - Unauthorized Property Access",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"admin\": true, \"report\": \"Normal\"}"
+        }
+      }
+    }
+  ,{
+      "name": "API1:2023 - Broken Object Level Authorization - Access Own Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{own_patient_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API1:2023 - Broken Object Level Authorization - Access Others' Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{other_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{other_patient_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{own_patient_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{own_patient_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Fuzzed pid (SQLi attempt)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=1' OR '1'='1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "1' OR '1'='1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Fuzzed pid (XSS attempt)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=<script>alert(1)</script>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "<script>alert(1)</script>" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Empty pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Large pid (DoS attempt)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=***_-START_ACME_SCRIPT_HERE-_***10000***_-END_ACME_SCRIPT_HERE-_***",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{very_long_pid}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Wildcard pid (potential mass fetch)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%25",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "%" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Attempt as unauthorized role",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{user_with_insufficient_privs}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{own_patient_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API6:2023 - Unrestricted Access to Sensitive Business Flows - Automated scraping attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "{{own_patient_id}}" }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// Simulate scraping by looping the request 20 times",
+              "for (let i = 0; i < 20; i++) {",
+              "    pm.sendRequest({",
+              "        url: pm.request.url.toString(),",
+              "        method: pm.request.method,",
+              "        header: pm.request.headers.toJSON(),",
+              "    }, function (err, res) {});",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Edge Case - Negative pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=-1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "-1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Numeric pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=1234567890",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "1234567890" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Special Characters pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=!@#$%^&*()_+",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "!@#$%^&*()_+" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Unicode pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=患者123",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            { "key": "pid", "value": "患者123" }
+          ]
+        }
+      }
+    }
+  ,
+    {
+        "name": "Export Report - Valid Token & Valid ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "{{report_id_valid}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Invalid ID (String)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/invalid_string",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "invalid_string"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Invalid ID (Negative Number)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/-1",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "-1"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & ID as 0 (Boundary Value)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/0",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "0"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Large ID (Boundary Value)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/9223372036854775807",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "9223372036854775807"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Special Characters in ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/%24%26%3F%23",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "$&?#"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Empty ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    ""
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Invalid Token & Valid ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_invalid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "{{report_id_valid}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - No Token & Valid ID",
+        "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_valid}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "{{report_id_valid}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & ID Not Owned by User (BOLA)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{{report_id_not_owned}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "{{report_id_not_owned}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & ID with SQL Injection Attempt",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/1%20OR%201%3D1",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "1 OR 1=1"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & ID with Path Traversal Attempt",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/..%2F..%2Fetc%2Fpasswd",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "../..etc/passwd"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & Float ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/1234.56",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "1234.56"
+                ]
+            }
+        }
+    },
+    {
+        "name": "Export Report - Valid Token & JavaScript Code in ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export",
+                    "<script>alert(1)</script>"
+                ]
+            }
+        }
+    }
+,{
+      "name": "API1:2023 - Broken Object Level Authorization",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?id={{other_user_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{other_user_id}}"
+            }
+          ]
+        },
+        "description": "Attempt to export reports using another user's id."
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ]
+        },
+        "description": "No authentication token provided."
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ]
+        },
+        "description": "Invalid authentication token provided."
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Attempt to Export Unredacted",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?fields=sensitive_field1,sensitive_field2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "fields",
+              "value": "sensitive_field1,sensitive_field2"
+            }
+          ]
+        },
+        "description": "Attempt to export with explicit sensitive fields requested."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Large Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=1000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1000000"
+            }
+          ]
+        },
+        "description": "Request extremely large CSV export."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Negative Limit",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=-100",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "-100"
+            }
+          ]
+        },
+        "description": "Send negative limit value."
+      },
+      "response": []
+    },
+    {
+      "name": "API4:2023 - Unrestricted Resource Consumption - Special Characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=%40%23%24%25%5E%26*()",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "@#$%^&*()"
+            }
+          ]
+        },
+        "description": "Send special characters in limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Disallowed Export Type",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?exportType=raw",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "exportType",
+              "value": "raw"
+            }
+          ]
+        },
+        "description": "Attempt to export raw (unredacted) reports using exportType param."
+      },
+      "response": []
+    },
+    {
+      "name": "API6:2023 - Unrestricted Access to Sensitive Business Flows",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?flow=admin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "flow",
+              "value": "admin"
+            }
+          ]
+        },
+        "description": "Attempt to use admin flow as a regular user."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Empty Query Params",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": ""
+            }
+          ]
+        },
+        "description": "Send empty value for limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Invalid Data Types",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=abc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "abc"
+            }
+          ]
+        },
+        "description": "Send string value for integer limit param."
+      },
+      "response": []
+    },
+    {
+      "name": "Edge Case - Extremely Small/Zero Limit",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?limit=0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "0"
+            }
+          ]
+        },
+        "description": "Send zero value for limit param."
+      },
+      "response": []
+    }
+  ,
+    {
+        "name": "API1:2023 - Broken Object Level Authorization",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{{another_users_id}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "{{another_users_id}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API2:2023 - Broken Authentication - No Token",
+        "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{{valid_id}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "{{valid_id}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API2:2023 - Broken Authentication - Invalid Token",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{invalid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{{valid_id}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "{{valid_id}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API3:2023 - Broken Object Property Level Authorization - Guessing ID",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/1",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "1"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Large Integer",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/9223372036854775807",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "9223372036854775807"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Negative Number",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/-1",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "-1"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Zero",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/0",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "0"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Minimum Integer",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/-9223372036854775808",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "-9223372036854775808"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Special Characters",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/%40%23%24%25%5E%26*%28%29",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "@#$%^&*()"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API4:2023 - Unrestricted Resource Consumption - Empty Value",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    ""
+                ]
+            }
+        }
+    },
+    {
+        "name": "API5:2023 - Broken Function Level Authorization - Use Valid Token with Different Role",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{low_priv_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{{valid_id}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "{{valid_id}}"
+                ]
+            }
+        }
+    },
+    {
+        "name": "API6:2023 - Unrestricted Access to Sensitive Business Flows - Automated Export Loop",
+        "event": [
+            {
+                "listen": "prerequest",
+                "script": {
+                    "exec": [
+                        "if (!pm.environment.get('loop_counter')) {",
+                        "    pm.environment.set('loop_counter', 0);",
+                        "}",
+                        "let loop_counter = parseInt(pm.environment.get('loop_counter'));",
+                        "if (loop_counter < 10) {",
+                        "    pm.environment.set('loop_counter', loop_counter + 1);",
+                        "    postman.setNextRequest('API6:2023 - Unrestricted Access to Sensitive Business Flows - Automated Export Loop');",
+                        "} else {",
+                        "    pm.environment.unset('loop_counter');",
+                        "}"
+                    ],
+                    "type": "text/javascript"
+                }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{valid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{{valid_id}}",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-csv",
+                    "{{valid_id}}"
+                ]
+            }
+        }
+    }
+,
+    {
+        "name": "Export All - No Auth (API2: Broken Authentication)",
+        "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Invalid Token (API2: Broken Authentication)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{invalid_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Valid Token (API1, API3: Broken Object/Property Level Authorization)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Very High Limit Parameter (API4: Unrestricted Resource Consumption)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?limit=10000000",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "limit",
+                        "value": "10000000"
+                    }
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Negative Limit Parameter (API4: Unrestricted Resource Consumption)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?limit=-1",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "limit",
+                        "value": "-1"
+                    }
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Special Characters in Limit (API4: Unrestricted Resource Consumption)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?limit=%24%26%2A%40%21",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "limit",
+                        "value": "$&*@!"
+                    }
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Empty Limit Parameter (API4: Unrestricted Resource Consumption)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?limit=",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "limit",
+                        "value": ""
+                    }
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Non-numeric Limit Parameter (API4: Unrestricted Resource Consumption)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?limit=abc",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "limit",
+                        "value": "abc"
+                    }
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Excessive Requests (API4: Unrestricted Resource Consumption)",
+        "event": [
+            {
+                "listen": "prerequest",
+                "script": {
+                    "exec": [
+                        "if (!pm.collectionVariables.get('rate_limit_counter')) {",
+                        "    pm.collectionVariables.set('rate_limit_counter', 0);",
+                        "}",
+                        "let cnt = parseInt(pm.collectionVariables.get('rate_limit_counter')) + 1;",
+                        "pm.collectionVariables.set('rate_limit_counter', cnt);"
+                    ],
+                    "type": "text/javascript"
+                }
+            }
+        ],
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Function Level Auth (API5: Broken Function Level Authorization) as User",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{user_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ]
+            }
+        },
+        "response": []
+    },
+    {
+        "name": "Export All - Business Flow Automation (API6: Unrestricted Access to Sensitive Business Flows)",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{auth_token}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all?automate=true",
+                "protocol": "http",
+                "host": [
+                    "localhost"
+                ],
+                "port": "8080",
+                "path": [
+                    "v1",
+                    "medical",
+                    "report",
+                    "export-all"
+                ],
+                "query": [
+                    {
+                        "key": "automate",
+                        "value": "true"
+                    }
+                ]
+            }
+        },
+        "response": []
+    }
+,{
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/store",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/store",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/store"
+                ],
+                "path": []
+            },
+            "body": {
+                "mode": "raw",
+                "raw": "{\"patientId\": \"\", \"patientName\": \"\\ud956\\udea2j\", \"gender\": \"c\\u00b8\", \"dateOfBirth\": \"Q\\u00ec\\ud920\\udf4a{M\\n\\u00e5\\ud8d8\\udcec\\u00dfd*\\ud90d\\udde2\\u00be\\udab7\\ude17}\\ud93c\\udf06\\ud8b5\\udc0f\\u00c7d\\uda3a\\udc5a\\u00a3Zv\", \"bloodGroup\": \"\\u008e\\u00few;\\udaf9\\udc0dL\\ud8b1\\udf42Z\", \"doctorId\": \"y\\u00e8\", \"doctorName\": \"b\\u0089\\u00c8r%|\\u00a4\\u00df\\u0097\\ud852\\udd14\\ud8ad\\udeb7\\ud9ca\\ude0ar\\u00de\\u0098\\u00ec+\\u0080\\ud9f4\\udd19y\\u000b\\u0092^P\\u00abl\", \"department\": \"\\uda44\\ude93\\u00fd\", \"reportDate\": \"\\u00c1\\ud880\\udf1e\\ud921\\udef3\\u00be\\u00fdh\\u0016\\f\\u00fc\\u00cdd\\u00b2\\ud8ab\\udfff`\", \"reportType\": \"\\u00b0\\n\\u00b0}\\u009e\\u00aaoeWe\\u00a9\", \"diagnosisSummary\": \"\\udbe4\\ude1a\\u00ff\\u0010\\udb3b\\udeac\", \"weight\": null, \"height\": null, \"pulseRate\": -6260, \"bloodPressureSystolic\": 86, \"bloodPressureDiastolic\": -8913523739364525937, \"bodyTemperature\": null, \"prescribedMedications\": \"\", \"lifestyleAdvice\": \"j\\u00e0\\u0013\", \"createdAt\": \"\\ud991\\uddebB\", \"updatedAt\": \"\\u00a1R\\u00c5j\\u00deq\\ud93c\\udd02 \\u00ea\\u00d2\\u00bb\"}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/store",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/store",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/store"
+                ],
+                "path": []
+            },
+            "body": {
+                "mode": "raw",
+                "raw": "{\"patientId\": \"\\u0002\\ud9b3\\udc39s\\u00ae\\u00c3y\\u00ba\\u00dep\\udbf5\\udd05\", \"patientName\": \"sa\", \"gender\": \"undefined\", \"dateOfBirth\": \"\\u008a\\u0018\\udbec\\udf5bk\\ud831\\udf6b\\u00f8(\\u00c9\\u008a*\\u001d\", \"bloodGroup\": \"\\u008d\\u0083\", \"doctorId\": \"\\u00b9l\\u0087\\u00df\\udb0d\\udfa9E\", \"doctorName\": \"\\u00e7\", \"department\": \"\\ud888\\ude8e\\ud99c\\udf7f\\u007f\\uda8f\\udf22\\u00d2G\\u00f0\\u00e3\\udb45\\ude97\\u00a3?\\ud881\\udd60\\u00a5\\u0423\\udb2c\\udc7bf\\udb41\\udf56\\u0086\\u009f\\\"\\u00c8\\u00e3\\u001a\\u00f4\", \"reportDate\": \"\\u00b7\\u00e8\\u00b7\\u00da\\u00e7J\\u0088\", \"reportType\": \"\\u007f\\udb2a\\udcb1\\u009d\", \"diagnosisSummary\": \"s\\ud8f0\\udec0\\u008b\\u1c76'\\u00e9z\", \"weight\": null, \"height\": null, \"pulseRate\": -6059, \"bloodPressureSystolic\": 20420, \"bloodPressureDiastolic\": 12, \"bodyTemperature\": null, \"prescribedMedications\": \"\\udbad\\udf9b\\ud907\\udd68\\u00ea\\u00cft\\ud887\\udeb3\\udbf0\\udfe8\\u00b3\\u00b4\\udae9\\uddeb\\u00ca\\u00e1\\u00d9\\u00c1\\u00d1\\ud943\\ude67z\\u00eb\", \"lifestyleAdvice\": \"\\ud860\\udd5bu\\u007fU\\u0083\\u00c8\\u00c8\\uda26\\uddad\\u0013/\\u000b\", \"createdAt\": \"\", \"updatedAt\": \"\\u00b2m\\u00ceu\\u00e4}\"}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/store",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/store",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/store"
+                ],
+                "path": []
+            },
+            "body": {
+                "mode": "raw",
+                "raw": "{\"patientId\": \"u\\u00f3\\u00aa\\u00bfV\", \"patientName\": \"\\u00d7&&P\\u00e7\\ud82f\\udd7f\\u00d6\\u001ds\\udb94\\udf50\\uda55\\udf69c\\u00b2\\u00e2\\u00bd\\u00d6\\u008d\\u0003\\u00d2\\udbb1\\uddedJ\\u0082\\u00e1;\\u009fr\\u00ae\\u008c\\udb56\\udcd3\\u00cd\", \"gender\": \"\\u00ac\\ud884\\udf13\", \"dateOfBirth\": \"\\u00ae\", \"bloodGroup\": \"\\u0002\\ud92c\\ude41\\u00ee\\ud85d\\udf70\\u00db)\\u00eb1\\u00e2w\\f\\u00ad\\udb74\\udcaf\\ud9cc\\ude57\\ud8f2\\udf44\", \"doctorId\": \"\", \"doctorName\": \"\\u00acWePJ\\u0012\\u00be\\u008d\\u0091/\\u009c\\uda13\\udee2\", \"department\": \"API2:2023\", \"reportDate\": \"r\\u00bc\\uda93\\udf219\\u00f1U\", \"reportType\": \"\\u0084\\udaf5\\udfc3\\ud8d4\\udc65\", \"diagnosisSummary\": \"\\u00a3\\u00da<gj#\\u0082c\\udb1e\\udc51\\udb33\\udec4\\udacb\\ude2f\\udaa6\\udf63\\u0093\\ud933\\udedc\\u0011\\ud8f9\\ude37\", \"weight\": null, \"height\": null, \"pulseRate\": 2002012033, \"bloodPressureSystolic\": 1641, \"bloodPressureDiastolic\": 27471, \"bodyTemperature\": null, \"prescribedMedications\": \"%,\\ud87b\\udcb2\\udb4d\\udfc0\\u009e\\u00ab\\u00eb\\u00a9\", \"lifestyleAdvice\": \"(\\u00abn6\\ud999\\udd8b}Eg\\u00c4\\u00fe\\u8839\", \"createdAt\": \"\\u00b2~\\u00b2\", \"updatedAt\": \"F\\uda1f\\udf43\\ud92d\\udd3a\\u00a0\\ud996\\udcf6\\u0004\\u00ea8\"}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/store",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/store",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/store"
+                ],
+                "path": []
+            },
+            "body": {
+                "mode": "raw",
+                "raw": "{\"patientId\": \"L\\u00d4\", \"patientName\": \"U,\\u0004\", \"gender\": \"\\udb5d\\ude76Y\\udaf1\\udd986\\u00ccg\", \"dateOfBirth\": \"\", \"bloodGroup\": \"addclosehook\", \"doctorId\": \"\\u008b\\udba2\\udc4az\", \"doctorName\": \"\", \"department\": \"\\u0002\", \"reportDate\": \"\\u0095\\ud802\\udefd\\u0098\\u00d0;\\u00f6J\\\"d\", \"reportType\": \"*\", \"diagnosisSummary\": \"\\u0084P\\ud853\\ude6b\\ud957\\udfe9\\udbd1\\udd0e\", \"weight\": null, \"height\": null, \"pulseRate\": 77, \"bloodPressureSystolic\": -27168, \"bloodPressureDiastolic\": 1524, \"bodyTemperature\": null, \"prescribedMedications\": \"\\u00ca\", \"lifestyleAdvice\": \"\", \"createdAt\": \"\\u00d8\", \"updatedAt\": \"I\\u009d\\u0084\\u00e4\\u0099\"}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/store",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/store",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/store"
+                ],
+                "path": []
+            },
+            "body": {
+                "mode": "raw",
+                "raw": "{\"patientId\": \"`\", \"patientName\": \"\\u0090\\u0006\\u00d3\\ud97e\\udf37\\ud938\\ude3c\", \"gender\": \"\\u00a0\\u0001*\\u008e\", \"dateOfBirth\": \"\", \"bloodGroup\": \"\", \"doctorId\": \"\\u0010\", \"doctorName\": \"\\ud902\\udfd4\\u0093\", \"department\": \"0\", \"reportDate\": \"\\u0099\\u00bc*\\uda78\\udff0\", \"reportType\": \"s\\u00de\\u0082\\u00b2\\u00bb\\ud8ba\\udd5c\\u00a1\\u00a7\\u00df\\u00fd\\u00c1\\u009e]\\u008d\\u00e9R\", \"diagnosisSummary\": \"\", \"weight\": null, \"height\": null, \"pulseRate\": 7131038414102037843, \"bloodPressureSystolic\": -8925, \"bloodPressureDiastolic\": 5955, \"bodyTemperature\": null, \"prescribedMedications\": \"\", \"lifestyleAdvice\": \"`\\u00aa<\\u00ee\", \"createdAt\": \"\", \"updatedAt\": \"\"}",
+                "options": {
+                    "raw": {
+                        "language": "json"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/deserialize",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/deserialize",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/deserialize"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/deserialize",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/deserialize",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/deserialize"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/deserialize",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/deserialize",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/deserialize"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/deserialize",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/deserialize",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/deserialize"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - POST http://localhost:8080/v1/medical/report/deserialize",
+        "request": {
+            "method": "POST",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/deserialize",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/deserialize"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/find",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/find",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/find"
+                ],
+                "path": [],
+                "query": [
+                    {
+                        "key": "pid",
+                        "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/find",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/find",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/find"
+                ],
+                "path": [],
+                "query": [
+                    {
+                        "key": "pid",
+                        "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/find",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/find",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/find"
+                ],
+                "path": [],
+                "query": [
+                    {
+                        "key": "pid",
+                        "value": "zlMPJeEDGX"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/find",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/find",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/find"
+                ],
+                "path": [],
+                "query": [
+                    {
+                        "key": "pid",
+                        "value": "\udacf\ude31\u000f\u00bd\u00a5"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/find",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/find",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/find"
+                ],
+                "path": [],
+                "query": [
+                    {
+                        "key": "pid",
+                        "value": "Steven Ellis"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-csv/{id}",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-csv/{id}",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-csv/{id}"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-all",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-all"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-all",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-all"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-all",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-all"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-all",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-all"
+                ],
+                "path": []
+            }
+        }
+    },
+    {
+        "name": "FUZZ - GET http://localhost:8080/v1/medical/report/export-all",
+        "request": {
+            "method": "GET",
+            "header": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                },
+                {
+                    "key": "Authorization",
+                    "value": "Bearer {{fuzz_auth_token_valid}}",
+                    "type": "text"
+                }
+            ],
+            "url": {
+                "raw": "http://localhost:8080/v1/medical/report/export-all",
+                "host": [
+                    "http://localhost:8080/v1/medical/report/export-all"
+                ],
+                "path": []
+            }
+        }
+    }

@@ -1,0 +1,4 @@
+# file: /usr/lib/python3/dist-packages/cryptography/hazmat/_oid.py
+# hypothesis_version: 6.138.2
+
+['.', 'Unknown OID', '_dotted_string']

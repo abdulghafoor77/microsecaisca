@@ -1,0 +1,166 @@
+{
+      "name": "VULN: Update Report - Valid ID, Valid Auth",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "reports",
+            "{{report_id}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportId\": {{report_id}},\n  \"patientId\": \"patient-edge-123!@#\",\n  \"patientName\": \"<script>alert('XSS')</script>\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1800-01-01\",\n  \"bloodGroup\": \"O-\",\n  \"doctorId\": \"doc-edge-456!@#\",\n  \"doctorName\": \"Dr. Evil\",\n  \"department\": \"Oncology\",\n  \"reportDate\": \"2099-12-31\",\n  \"reportType\": \"Annual\",\n  \"diagnosisSummary\": \"Very long string: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nulla eu bibendum cursus, sem elit dictum dolor, ac euismod risus enim eget ante.\",\n  \"weight\": -99999.99,\n  \"height\": 99999.99,\n  \"pulseRate\": -1,\n  \"bloodPressureSystolic\": 2147483647,\n  \"bloodPressureDiastolic\": -2147483648,\n  \"bodyTemperature\": 0,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": null,\n  \"createdAt\": \"2024-01-01T00:00:00Z\",\n  \"updatedAt\": \"2024-12-31T23:59:59Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "VULN: Update Report - Valid ID, Invalid Auth",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "reports",
+            "{{report_id}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportId\": {{report_id}},\n  \"patientId\": \"\",\n  \"patientName\": \"\",\n  \"gender\": \"other\",\n  \"dateOfBirth\": \"\",\n  \"bloodGroup\": \"AB+\",\n  \"doctorId\": \"\",\n  \"doctorName\": \"\",\n  \"department\": \"\",\n  \"reportDate\": \"\",\n  \"reportType\": \"\",\n  \"diagnosisSummary\": \"\",\n  \"weight\": 0,\n  \"height\": 0,\n  \"pulseRate\": 0,\n  \"bloodPressureSystolic\": 0,\n  \"bloodPressureDiastolic\": 0,\n  \"bodyTemperature\": 0,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        }
+      }
+    },
+    {
+      "name": "VULN: Update Report - Nonexistent ID",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "reports",
+            "999999999"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportId\": 999999999,\n  \"patientId\": \"nonexistent-patient\",\n  \"patientName\": \"Nonexistent\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"2022-02-29\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"nonexistent-doc\",\n  \"doctorName\": \"NoDoc\",\n  \"department\": \"Unknown\",\n  \"reportDate\": \"2022-02-29\",\n  \"reportType\": \"Unknown\",\n  \"diagnosisSummary\": \"None\",\n  \"weight\": 9999.99,\n  \"height\": 0.01,\n  \"pulseRate\": 9999,\n  \"bloodPressureSystolic\": 9999,\n  \"bloodPressureDiastolic\": 9999,\n  \"bodyTemperature\": 999.99,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"None\",\n  \"createdAt\": \"2022-02-29T00:00:00Z\",\n  \"updatedAt\": \"2022-02-29T00:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "VULN: Update Report - Invalid ID Type (String)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/notanumber",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "reports",
+            "notanumber"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportId\": \"notanumber\",\n  \"patientId\": \"patient-001\",\n  \"patientName\": \"Invalid Type\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"2020-01-01\",\n  \"bloodGroup\": \"B+\",\n  \"doctorId\": \"doc-001\",\n  \"doctorName\": \"Dr. Strange\",\n  \"department\": \"Neurology\",\n  \"reportDate\": \"2020-01-01\",\n  \"reportType\": \"Initial\",\n  \"diagnosisSummary\": \"Testing string ID\",\n  \"weight\": 70.5,\n  \"height\": 1.75,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 37.0,\n  \"prescribedMedications\": \"Testing\",\n  \"lifestyleAdvice\": \"Testing\",\n  \"createdAt\": \"2020-01-01T00:00:00Z\",\n  \"updatedAt\": \"2020-01-01T00:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "VULN: Update Report - Special Characters & Injection",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "reports",
+            "{{report_id}}"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportId\": {{report_id}},\n  \"patientId\": \"' OR '1'='1' --\",\n  \"patientName\": \"Robert'); DROP TABLE MedicalReport;--\",\n  \"gender\": \"\",\n  \"dateOfBirth\": \"<img src=x onerror=alert(1)>\",\n  \"bloodGroup\": \"A+\",\n  \"doctorId\": \"<svg/onload=alert('XSS')>\",\n  \"doctorName\": \"Dr. <b>Malicious</b>\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2021-05-05\",\n  \"reportType\": \"Test\",\n  \"diagnosisSummary\": \"Injection test\",\n  \"weight\": \"NaN\",\n  \"height\": \"Infinity\",\n  \"pulseRate\": null,\n  \"bloodPressureSystolic\": \"-9999999999\",\n  \"bloodPressureDiastolic\": \"9999999999\",\n  \"bodyTemperature\": \"\",\n  \"prescribedMedications\": \"<script>alert('med')</script>\",\n  \"lifestyleAdvice\": \"<iframe src='javascript:alert(2)'></iframe>\",\n  \"createdAt\": \"2021-05-05T05:05:05Z\",\n  \"updatedAt\": \"2021-05-05T05:05:05Z\"\n}"
+        }
+      }
+    }
+  

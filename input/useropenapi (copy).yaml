@@ -1,0 +1,3619 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "RISE VMC User API",
+        "description": "To manage user registration, authentication and role handling features. Contact <b>abdul.ghafoor@ri.se</b> for more information",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://192.168.132.136:9191",
+            "description": "Generated server url"
+        }
+    ],
+    "tags": [
+        {
+            "name": "User Registration",
+            "description": "Endpoints for managing user registration"
+        },
+        {
+            "name": "Role Management",
+            "description": "Endpoints for managing user roles"
+        },
+        {
+            "name": "Authentication",
+            "description": "Endpoints for user authentication and login"
+        }
+    ],
+    "paths": {
+        "/v1/backwardcompatibility": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "updateid",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/alter": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "alter",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/updatecredentials": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "updateCredentials",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/update/user/version": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "updateUserVersions",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/update/user/version/fill": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "fillUserVersions",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/update/user/version/tonull": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "updateRoleVersionsNULL",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/detail": {
+            "get": {
+                "tags": [
+                    "backward-compatibility-controler"
+                ],
+                "operationId": "detail",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hl/vdr/all": {
+            "get": {
+                "tags": [
+                    "hl-controller"
+                ],
+                "operationId": "fetchVDR",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hl/fetchdids": {
+            "put": {
+                "tags": [
+                    "hl-controller"
+                ],
+                "operationId": "fetchDids",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hl/hlstatus": {
+            "get": {
+                "tags": [
+                    "hl-controller"
+                ],
+                "operationId": "fetchDids_1",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hl/fetchregisteredemails": {
+            "get": {
+                "tags": [
+                    "hl-controller"
+                ],
+                "operationId": "fetchRegisteredEmails",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/hl/fetchpubkey": {
+            "put": {
+                "tags": [
+                    "hl-controller"
+                ],
+                "operationId": "fetchPublicKey",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loginprocessing/randomnumber": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login using random number",
+                "description": "Processes user login using a random number (OTP or one-time code). Public endpoint.",
+                "operationId": "loginUsingRandomNumber",
+                "requestBody": {
+                    "description": "DTO containing the random number for login",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RandomNumberDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BasicAuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid random number or request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — invalid login credentials",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/verification/{verificationCode}": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Verify user by verification code",
+                "description": "Verifies a user's account using a verification code sent via email or SMS. Public endpoint.",
+                "operationId": "verification",
+                "parameters": [
+                    {
+                        "name": "verificationCode",
+                        "in": "path",
+                        "description": "Verification code sent to the user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Verification successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid verification code",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Verification code not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/loginprocessing": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "User login",
+                "description": "Processes user login with credentials. Public endpoint.",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Basic authentication credentials (username and password)",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BasicAuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BasicAuthResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid credentials or request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — invalid login credentials",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/verify/status": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Verify user status via BankID",
+                "description": "Registers or verifies a user using BankID response. Public endpoint.",
+                "operationId": "registerThroughBankID",
+                "requestBody": {
+                    "description": "BankID response containing user verification data",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BankIdResponseDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User verified successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseMessage"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid BankID response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — invalid BankID response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/verification/dummy/{email}": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "operationId": "verificationByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/log": {
+            "get": {
+                "tags": [
+                    "mvc-log-controller"
+                ],
+                "operationId": "log",
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/org/{id}": {
+            "put": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Update organization by ID",
+                "description": "Updates an organization's details by ID. Requires authentication and proper authorization.",
+                "operationId": "updateOrganization",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the organization to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "DTO containing updated organization information",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrganizationDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Organization updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to update organization",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Organization not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/logo": {
+            "post": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Upload organization logo",
+                "description": "Uploads a logo for an organization. Requires authentication and proper authorization.",
+                "operationId": "uploadLogo",
+                "requestBody": {
+                    "description": "Logo file to upload",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "string",
+                                "format": "binary"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Logo uploaded successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid file upload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to upload logo",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/logo/download": {
+            "put": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Download organization logo",
+                "description": "Downloads an organization logo by providing the logo path. Requires authentication.",
+                "operationId": "downloadLogoPut",
+                "requestBody": {
+                    "description": "DTO containing the path of the logo to download",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LogoPathDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Logo downloaded successfully",
+                        "content": {
+                            "application/octet-stream": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid logo path provided",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to download logo",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Logo not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org": {
+            "post": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Add a new organization",
+                "description": "Creates a new organization in the system. Requires authentication and proper authorization.",
+                "operationId": "addOrganization",
+                "requestBody": {
+                    "description": "DTO containing organization information",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrganizationDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Organization created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to create organization",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/logo/downloadimage": {
+            "put": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Download organization logo image",
+                "description": "Downloads an organization logo image by providing the logo path. Requires authentication.",
+                "operationId": "downloadLogoPutRequest",
+                "requestBody": {
+                    "description": "DTO containing the path of the logo image to download",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LogoPathDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Logo image downloaded successfully",
+                        "content": {
+                            "image/png": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid logo path provided",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to download logo",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Logo image not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/{orgnumber}": {
+            "get": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Fetch organization by organization number",
+                "description": "Retrieves details of an organization by its number. Requires authentication.",
+                "operationId": "fetchOrganization",
+                "parameters": [
+                    {
+                        "name": "orgnumber",
+                        "in": "path",
+                        "description": "Organization number to fetch",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid organization number",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to fetch organization",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Organization not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/byid/{id}": {
+            "get": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Fetch organization by ID",
+                "description": "Retrieves details of an organization by its ID. Requires authentication.",
+                "operationId": "fetchOrganizationById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the organization to fetch",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization fetched successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid organization ID",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to fetch organization",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Organization not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/list": {
+            "get": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Fetch all organizations",
+                "description": "Retrieves a list of all organizations. Requires authentication.",
+                "operationId": "fetchAll",
+                "responses": {
+                    "200": {
+                        "description": "Organizations retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTOList"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to fetch organizations",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/org/default": {
+            "get": {
+                "tags": [
+                    "organization-controller"
+                ],
+                "summary": "Register or fetch default organization",
+                "description": "Registers the default organization or retrieves it if already present. Requires authentication.",
+                "operationId": "registerDefaultOrg",
+                "responses": {
+                    "200": {
+                        "description": "Default organization retrieved or registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrganizationDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to register default organization",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign": {
+            "post": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Assign role to a user",
+                "description": "Assigns a specific role to a user. Requires authentication and proper authorization.",
+                "operationId": "assignRole",
+                "requestBody": {
+                    "description": "DTO containing user ID and role to assign",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleAssignmentRequestDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Role assigned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid role or user ID)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to assign roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User or role not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/list": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Get list of all roles",
+                "description": "Retrieves all roles in the system. Requires authentication and proper authorization.",
+                "operationId": "findAllRoles",
+                "responses": {
+                    "200": {
+                        "description": "Roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to view roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign/{role}": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Fetch role assignment requests for a role",
+                "description": "Retrieves pending role assignment requests for the specified role. Requires authentication and proper authorization.",
+                "operationId": "fetchRoleRequests",
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "description": "Role name to fetch requests for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role requests retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentRequestDTOList"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid role parameter",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to view role requests",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Role not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/fetch/myroles": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Fetch roles of the authenticated user",
+                "description": "Retrieves all roles assigned to the currently authenticated user. Requires authentication.",
+                "operationId": "fetchMyRole",
+                "responses": {
+                    "200": {
+                        "description": "Roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentRequestDTOList"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/fetch/byemail/{email}": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Fetch roles by user email",
+                "description": "Retrieves all roles assigned to the user with the specified email. Requires authentication and proper authorization.",
+                "operationId": "fetchRolesByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email of the user whose roles are to be retrieved",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentRequestDTOList"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email parameter",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/fetch/org/roles/{orgno}": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Fetch roles for an organization",
+                "description": "Retrieves all roles assigned within the specified organization. Requires authentication and proper authorization.",
+                "operationId": "fetchOrgRole",
+                "parameters": [
+                    {
+                        "name": "orgno",
+                        "in": "path",
+                        "description": "Organization number to fetch roles for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentRequestDTOList"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid organization number parameter",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to view organization roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Organization not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign/disable/{id}": {
+            "put": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Disable a role by ID",
+                "description": "Disables the specified role by its ID. Requires authentication and proper authorization.",
+                "operationId": "disableRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the role to disable",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role disabled successfully",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid role ID parameter",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to disable role",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Role not found",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign/enable/{id}": {
+            "put": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Enable a role by ID",
+                "description": "Enables the specified role by its ID. Requires authentication and proper authorization.",
+                "operationId": "enableRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the role to enable",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role enabled successfully",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid role ID parameter",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to enable role",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Role not found",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign/issuer/byorg": {
+            "put": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Assign issuer role by organization",
+                "description": "Assigns an issuer role to a user for a specific organization List<RoleAssignmentDTOResponse>. Requires authentication and proper authorization.",
+                "operationId": "assignIssuerByOrg",
+                "requestBody": {
+                    "description": "DTO containing user and organization details for issuer assignment",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TVAssignmentDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Issuer role assigned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to assign issuer roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User or organization not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assign/issuer/byind": {
+            "put": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Assign issuer role by individual user",
+                "description": "Assigns an issuer role to a specific individual user. Requires authentication and proper authorization.",
+                "operationId": "assignIssuerByInd",
+                "requestBody": {
+                    "description": "DTO containing individual user information for issuer assignment",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TVUserAssignmentDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Issuer role assigned successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to assign issuer roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assigned/issuerrole/byemail/{did}": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Get assigned issuer roles by DID",
+                "description": "Retrieves all issuer roles assigned to a user identified by DID. Requires authentication.",
+                "operationId": "assignedRolesByDiD",
+                "parameters": [
+                    {
+                        "name": "did",
+                        "in": "path",
+                        "description": "DID of the user whose assigned roles are to be retrieved",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assigned issuer roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAssignmentDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid DID parameter",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/role/assigned/issuerrole/byemail/jee/ee": {
+            "get": {
+                "tags": [
+                    "Role Management"
+                ],
+                "summary": "Get assigned issuer roles for authenticated user",
+                "description": "Retrieves all issuer roles assigned to the currently authenticated user. Requires authentication.",
+                "operationId": "assignedRolesByDiD_1",
+                "responses": {
+                    "200": {
+                        "description": "Assigned issuer roles retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access roles",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/register/resend": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Resend registration confirmation email",
+                "description": "Allows a user to request resending of the confirmation/verification email if the initial registration email was not received.",
+                "operationId": "resend",
+                "requestBody": {
+                    "description": "Email DTO of the user requesting verification email resend",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Verification email resent successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserEmailDTO"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g. bad email format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User with given email not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/register": {
+            "post": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Register a new user",
+                "description": "Creates a new user account in the system. This endpoint is publicly accessible and does not require authentication.",
+                "operationId": "addUser",
+                "requestBody": {
+                    "description": "User registration payload",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (validation error)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "409": {
+                        "description": "User already exists",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/users": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Retrieve all users",
+                "description": "Returns a list of all users in List<UserDTOResponse>. Requires authentication and proper authorization.",
+                "operationId": "findAllUsers",
+                "responses": {
+                    "200": {
+                        "description": "List of users retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to view users",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/userbyid/{id}": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Retrieve a user by ID",
+                "description": "Returns a user by their ID. Requires authentication and proper authorization.",
+                "operationId": "findUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the user to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": 123
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access this resource",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/userbyemail/{email}": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Retrieve a user by email",
+                "description": "Returns a user by their email address. Requires authentication and proper authorization.",
+                "operationId": "findUserByEmail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email of the user to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@example.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access this resource",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/fetch/allemails": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Fetch all user emails",
+                "description": "Returns a list of all registered user emails. Requires authentication and proper authorization.",
+                "operationId": "findAllEmails",
+                "responses": {
+                    "200": {
+                        "description": "List of emails retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access emails",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/userowndata": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Get current user's own data",
+                "description": "Returns the data of the currently authenticated user based on the token.",
+                "operationId": "findUserByToken",
+                "responses": {
+                    "200": {
+                        "description": "User data retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — token not valid or user not authorized",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/exist/{email}": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Check if a user exists by email",
+                "description": "Returns whether a user with the given email exists in the system.",
+                "operationId": "findUserByEmailChkExistance",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "Email to check for existence",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@example.com"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User existence check successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email format",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/enable": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Enable a user account",
+                "description": "Enables a user account based on the provided email. Requires authentication and proper authorization.",
+                "operationId": "enableUser",
+                "requestBody": {
+                    "description": "Email DTO of the user to enable",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User account enabled successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid email format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to enable accounts",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/disable": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Disable a user account",
+                "description": "Disables a user account. Requires authentication and proper authorization.",
+                "operationId": "disableUser",
+                "requestBody": {
+                    "description": "Email DTO of the user to enable",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User account disabled successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to disable accounts",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/updatename": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Update user's name",
+                "description": "Updates the name of the authenticated user. Requires authentication.",
+                "operationId": "updateUserName",
+                "requestBody": {
+                    "description": "DTO containing the new name of the user",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDataDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User name updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user cannot update another user's name",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/change/email": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Update user's email",
+                "description": "Updates the email address of the authenticated user. Requires authentication.",
+                "operationId": "updateEmail",
+                "requestBody": {
+                    "description": "DTO containing the new email address",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Email updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid email format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user cannot update another user's email",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/change/changessno": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Update user's Social Security Number",
+                "description": "Updates the SSN of the authenticated user. Requires authentication and proper authorization.",
+                "operationId": "updateSocialSecurity",
+                "requestBody": {
+                    "description": "DTO containing the new SSN for the user",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Social Security Number updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid SSN format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user cannot update another user's SSN",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/updatepassword": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Update user's password",
+                "description": "Updates the password of the authenticated user. Requires authentication.",
+                "operationId": "updateUserPassword",
+                "requestBody": {
+                    "description": "DTO containing the old and new password",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserChangePasswordDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Password updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., weak password, mismatch)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user cannot update another user's password",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/vcode/resetpassword": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Send password reset email",
+                "description": "Initiates the password reset process by sending a reset email to the provided user email. Public endpoint.",
+                "operationId": "sendPassowrdResetEmail",
+                "requestBody": {
+                    "description": "DTO containing the email for password reset",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmailDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Password reset email sent successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid email format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User with provided email not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/resetpassword/byowner/": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Reset user's password by owner",
+                "description": "Resets the password for the user using a token or owner-provided confirmation. Public endpoint if secure token is used.",
+                "operationId": "resetUserPassword",
+                "requestBody": {
+                    "description": "DTO containing the reset token and new password",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserResetPasswordDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Password reset successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., missing or invalid token)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/resetpassword/verificationcode": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Reset user's password using verification code",
+                "description": "Resets the password for the user using a verification code sent via email or SMS. Public endpoint.",
+                "operationId": "resetUserPasswordByVC",
+                "requestBody": {
+                    "description": "DTO containing the verification code and new password",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserVCResetPasswordDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Password reset successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid or expired verification code)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/verify/socialsecurity": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Check if Social Security Number exists",
+                "description": "Verifies whether a given Social Security Number exists in the system. Public endpoint.",
+                "operationId": "isSocialSecurityNoExist",
+                "requestBody": {
+                    "description": "DTO containing the Social Security Number to verify",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SocialSecurityNoDTO"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Verification completed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., invalid SSN format)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Social Security Number not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/email/to/did": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Find user DID by email",
+                "description": "Returns the DID associated with the given email. Requires authentication.",
+                "operationId": "findUserByEmailToDid",
+                "requestBody": {
+                    "description": "DTO containing the email of the user",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "DID retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., malformed email)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access DID",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User with provided email not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/issuer/email/to/userinfo": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Find user information by email",
+                "description": "Retrieves detailed information of the user associated with the provided email. Requires authentication.",
+                "operationId": "findUserByEmailToUserInfo",
+                "requestBody": {
+                    "description": "DTO containing the email of the user to retrieve info for",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserEmail"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "User information retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., malformed email)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access information",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/user/issuer/email/to/userinfo/pnr": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "operationId": "findUserByPNRToUserInfo",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserPNR"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/user/did/to/email": {
+            "put": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Find user email by DID",
+                "description": "Returns the email associated with the given DID. Requires authentication.",
+                "operationId": "findUserByDidToEmail",
+                "requestBody": {
+                    "description": "DTO containing the DID of the user",
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDid"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Email retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDTOResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request payload (e.g., malformed DID)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to access this email",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/admin": {
+            "get": {
+                "tags": [
+                    "User Registration"
+                ],
+                "summary": "Add a new admin",
+                "description": "Adds a new administrator. Requires authentication and proper authorization.",
+                "operationId": "addAdmin",
+                "responses": {
+                    "200": {
+                        "description": "Admin added successfully",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — authentication required",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden — user not authorized to add an admin",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UserEmail": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RandomNumberDTO": {
+                "type": "object",
+                "properties": {
+                    "randomNumber": {
+                        "type": "string"
+                    }
+                }
+            },
+            "BasicAuthResponse": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "accessToken": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseMessage": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "BasicAuthRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "BankIdResponseDTO": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "recordDate": {
+                        "type": "string"
+                    },
+                    "socialSecurityNo": {
+                        "type": "string"
+                    },
+                    "usedDate": {
+                        "type": "string"
+                    },
+                    "randomNumber": {
+                        "type": "string"
+                    },
+                    "usedStatus": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "OrganizationDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "orgNumber": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "type": "string"
+                    },
+                    "notes": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "contactnumber": {
+                        "type": "string"
+                    },
+                    "creationDate": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "postalcode": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "logoPath": {
+                        "type": "string"
+                    }
+                }
+            },
+            "LogoPathDTO": {
+                "type": "object",
+                "properties": {
+                    "logoPath": {
+                        "type": "string"
+                    }
+                }
+            },
+            "OrganizationDTOList": {
+                "type": "array",
+                "properties": {
+                    "empty": {
+                        "type": "boolean"
+                    }
+                },
+                "items": {
+                    "$ref": "#/components/schemas/OrganizationDTO"
+                }
+            },
+            "RoleAssignmentRequestDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "motivation": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "assigner": {
+                        "type": "string"
+                    },
+                    "orgNumber": {
+                        "type": "string"
+                    },
+                    "templateVersionId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RoleAssignmentDTOResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "assigner": {
+                        "type": "string"
+                    },
+                    "requestDate": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "motivation": {
+                        "type": "string"
+                    },
+                    "orgNumber": {
+                        "type": "string"
+                    },
+                    "templateVersionId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RoleAssignmentRequestDTOList": {
+                "type": "array",
+                "properties": {
+                    "empty": {
+                        "type": "boolean"
+                    }
+                },
+                "items": {
+                    "$ref": "#/components/schemas/RoleAssignmentRequestDTO"
+                }
+            },
+            "TVAssignmentDTO": {
+                "type": "object",
+                "properties": {
+                    "orgNumber": {
+                        "type": "array",
+                        "properties": {
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "templateVersionId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "TVUserAssignmentDTO": {
+                "type": "object",
+                "properties": {
+                    "templateVersionId": {
+                        "type": "string"
+                    },
+                    "roleAssignmentId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserEmailDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    },
+                    "socialSecurityNo": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDTOResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "did": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "roles": {
+                        "type": "string"
+                    },
+                    "verified": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "birthDate": {
+                        "type": "string"
+                    },
+                    "scheme": {
+                        "type": "string"
+                    },
+                    "isBankIdVerified": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "socialSecurityNo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDataDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": "string"
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "birthDay": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "birthMonth": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "birthYear": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "UserChangePasswordDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "oldPassword": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserResetPasswordDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserVCResetPasswordDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    },
+                    "verificationCode": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SocialSecurityNoDTO": {
+                "type": "object",
+                "properties": {
+                    "socialSecurityNo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserPNR": {
+                "type": "object",
+                "properties": {
+                    "socialSecurityNo": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDid": {
+                "type": "object",
+                "properties": {
+                    "did": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "socialSecNumber": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

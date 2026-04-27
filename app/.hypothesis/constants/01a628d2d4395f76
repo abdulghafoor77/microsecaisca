@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/JSONHandler.py
+# hypothesis_version: 6.138.2
+
+['\nSummary:', '        }', '    let result = [];', '    }', '"', '", ', '"?,\\s*"', '"item"', '%Y-%m-%d %H:%M:%S', ',', ',\\s*(?="?\\w+"\\s*:)', ',\\s*([}])', ':', '[', '\\"', '\\1', ']', '__main__', 'acme.log', 'error', 'exec', 'index', 'listen', 'object', 'packages', 'prerequest', 'r', 'requests', 'script', 'text/javascript', 'type', 'utf-8', 'w', '{', '}']

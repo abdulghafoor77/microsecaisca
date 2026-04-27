@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "RISE VMC VC Issuance API",
+        "description": "To manage VC Issuance and downloading. This is authenticated service so only the authenticated Holder or Issuer role can perform exposed services. Contact <b>abdul.ghafoor@ri.se</b> for more information",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://mikromeriter.testyta.se:9194",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/v1/vc/holder/credential/linkedin/bydocumentid/{documentid}": {
+            "get": {
+                "tags": [
+                    "vc-holder-controller"
+                ],
+                "operationId": "getData4Linkedin",
+                "parameters": [
+                    {
+                        "name": "documentid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/integrator/credential": {
+            "post": {
+                "tags": [
+                    "vc-integrator-controller"
+                ],
+                "operationId": "requestVV2C",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IntegratorDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/issue/issuer/credential": {
+            "post": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "requestVV2C_1",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/IssueAttributeBasedVCDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vc/admin/guest/user/update": {
+            "put": {
+                "tags": [
+                    "vc-issuance-controller"
+                ],
+                "operationId": "updateGuest",
+                "requestBody": {
+                    "content": {
+                        "application/json;charset=UTF-8": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GuestUserUpdateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "default response",
+                        "content": {
+                            "application/json;charset=UTF-8": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "IntegratorDTO": {
+                "type": "object",
+                "properties": {
+                    "issuedTo": {
+                        "type": "array",
+                        "properties": {
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/IssueToDTO"
+                        }
+                    },
+                    "attributesList": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "templateVersionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "kpsecret": {
+                        "type": "string"
+                    },
+                    "authType": {
+                        "type": "string"
+                    },
+                    "kpidentifier": {
+                        "type": "string"
+                    }
+                }
+            },
+            "IssueToDTO": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "personNumber": {
+                        "type": "string"
+                    },
+                    "userFullName": {
+                        "type": "string"
+                    },
+                    "issueDate": {
+                        "type": "string"
+                    }
+                }
+            },
+            "IssueAttributeBasedVCDTO": {
+                "type": "object",
+                "properties": {
+                    "issuedTo": {
+                        "type": "array",
+                        "properties": {
+                            "empty": {
+                                "type": "boolean"
+                            }
+                        },
+                        "items": {
+                            "$ref": "#/components/schemas/IssueToDTO"
+                        }
+                    },
+                    "attributesList": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "templateVersionId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GuestUserUpdateDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
+

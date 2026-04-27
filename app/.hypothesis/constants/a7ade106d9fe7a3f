@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_io.py
+# hypothesis_version: 6.138.2
+
+['PYTHONIOENCODING', '_pydevd_%s_redirect_', '_stack_%s', 'both', 'buffer', 'encoding', 'flush', 'isatty', 'replace', 'stderr', 'stdout', 'utf-8', 'write']

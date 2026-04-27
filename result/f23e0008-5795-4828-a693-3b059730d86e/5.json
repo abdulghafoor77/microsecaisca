@@ -1,0 +1,508 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization",
+      "item": [
+        {
+          "name": "Access someone else's report (valid token, unauthorized id)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{unauthorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{unauthorized_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Access own report (valid token, authorized id)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{authorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{authorized_report_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API2:2023 - Broken Authentication",
+      "item": [
+        {
+          "name": "No token (unauthenticated)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{authorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{authorized_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Invalid token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{invalid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{authorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{authorized_report_id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Expired token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{expired_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{authorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{authorized_report_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization",
+      "item": [
+        {
+          "name": "Try export with sensitive id value (edge-case)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{sensitive_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{sensitive_report_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization",
+      "item": [
+        {
+          "name": "Low-privilege user tries export",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{low_priv_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/{{authorized_report_id}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "{{authorized_report_id}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API7:2023 - Server Side Request Forgery (SSRF)",
+      "item": [
+        {
+          "name": "ID as SSRF payload (localhost)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/127.0.0.1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "127.0.0.1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "ID as SSRF payload (internal DNS)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/admin.internal",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "admin.internal"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration",
+      "item": [
+        {
+          "name": "ID as SQL injection attempt",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/1%20OR%201%3D1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "1 OR 1=1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "ID as XSS attempt",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/%3Cscript%3Ealert(1)%3C%2Fscript%3E",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "<script>alert(1)</script>"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "API9:2023 - Improper Inventory Management",
+      "item": [
+        {
+          "name": "Nonexistent id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/999999999999",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "999999999999"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Very large id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "9223372036854775807"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Negative id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/-1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "-1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "ID as empty value",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                ""
+              ]
+            }
+          }
+        },
+        {
+          "name": "ID as special characters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/@$!%*?&#",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "@$!%*?&#"
+              ]
+            }
+          }
+        },
+        {
+          "name": "ID as string value",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{valid_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/v1/medical/report/export-csv/abc123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "v1",
+                "medical",
+                "report",
+                "export-csv",
+                "abc123"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [

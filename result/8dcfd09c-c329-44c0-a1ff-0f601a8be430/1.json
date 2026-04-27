@@ -1,0 +1,217 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization - Unauthorized Access",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"report_id\": \"{{target_report_id}}\", \"data\": \"test\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Tampering Properties",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"report_id\": \"{{target_report_id}}\", \"is_admin\": true, \"privileged_data\": \"secret\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "API6:2023 - Unrestricted Access to Sensitive Business Flows - Privileged Operation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"action\": \"download_all_reports\", \"report_id\": \"{{target_report_id}}\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Binary Deserialization Attempt",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "aced0005737200126a6176612e7574696c2e41727261794c6973747872000e6a6176612e7574696c2e4c69737441"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Empty Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Invalid Type (number instead of string)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "1234567890"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Very Large Number",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "999999999999999999999999999999999999999999999999999999999999"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Negative Number",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "-123456789"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Special Characters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_auth_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"report_id\": \"!@#$%^&*()_+|~=`{}[]:\\\";'<>?,./\", \"data\": \"<script>alert(1)</script>\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "deserialize"]
+        }
+      }
+    }
+  

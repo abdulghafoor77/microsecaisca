@@ -1,0 +1,181 @@
+{
+      "name": "Broken Object Level Authorization - Use Another Patient ID",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{other_patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"A+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-10\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 70,\n  \"height\": 175,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Regular exercise\",\n  \"createdAt\": \"2024-06-10T12:00:00Z\",\n  \"updatedAt\": \"2024-06-10T12:05:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Broken Object Property Level Authorization - Inject Unauthorized Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Jane Doe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1995-05-05\",\n  \"bloodGroup\": \"O-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Adams\",\n  \"department\": \"Neurology\",\n  \"reportDate\": \"2024-06-11\",\n  \"reportType\": \"MRI\",\n  \"diagnosisSummary\": \"Clear\",\n  \"weight\": 60,\n  \"height\": 165,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 115,\n  \"bloodPressureDiastolic\": 75,\n  \"bodyTemperature\": 37.0,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Normal\",\n  \"createdAt\": \"2024-06-11T09:00:00Z\",\n  \"updatedAt\": \"2024-06-11T09:05:00Z\",\n  \"isAdmin\": true\n}"
+        }
+      }
+    },
+    {
+      "name": "Broken Function Level Authorization - Use Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Test User\",\n  \"gender\": \"other\",\n  \"dateOfBirth\": \"2000-12-31\",\n  \"bloodGroup\": \"B+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Lee\",\n  \"department\": \"Oncology\",\n  \"reportDate\": \"2024-06-09\",\n  \"reportType\": \"Cancer Screening\",\n  \"diagnosisSummary\": \"Negative\",\n  \"weight\": 80,\n  \"height\": 180,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 130,\n  \"bloodPressureDiastolic\": 85,\n  \"bodyTemperature\": 38.2,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Balanced diet\",\n  \"createdAt\": \"2024-06-09T08:00:00Z\",\n  \"updatedAt\": \"2024-06-09T08:05:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Unrestricted Access to Sensitive Business Flows - Submit Special Characters & SQL Injection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Robert'); DROP TABLE Patients;--\",\n  \"gender\": \"male<script>alert('x')</script>\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Evil\",\n  \"department\": \"Oncology\",\n  \"reportDate\": \"2024-06-12\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": -9999999999,\n  \"height\": 9999999999,\n  \"pulseRate\": 0,\n  \"bloodPressureSystolic\": -120,\n  \"bloodPressureDiastolic\": 999999,\n  \"bodyTemperature\": \"NaN\",\n  \"prescribedMedications\": \"<script>alert('med')</script>\",\n  \"lifestyleAdvice\": \"' OR '1'='1\",\n  \"createdAt\": \"2024-06-12T12:00:00Z\",\n  \"updatedAt\": \"2024-06-12T12:05:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Security Misconfiguration - Empty Values, Missing Fields, Wrong Types",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"\",\n  \"patientName\": \"\",\n  \"gender\": null,\n  \"dateOfBirth\": \"\",\n  \"bloodGroup\": 12345,\n  \"doctorId\": \"\",\n  \"doctorName\": \"\",\n  \"department\": \"\",\n  \"reportDate\": \"notadate\",\n  \"reportType\": \"\",\n  \"diagnosisSummary\": \"\",\n  \"weight\": \"heavy\",\n  \"height\": \"tall\",\n  \"pulseRate\": \"fast\",\n  \"bloodPressureSystolic\": \"high\",\n  \"bloodPressureDiastolic\": \"low\",\n  \"bodyTemperature\": \"hot\",\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        }
+      }
+    }
+  

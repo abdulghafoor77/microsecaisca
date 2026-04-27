@@ -1,0 +1,318 @@
+{
+      "name": "Broken Object Level Authorization - Access Other User's Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{foreign_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{foreign_report_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Authentication - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Authentication - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Negative Report ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/-1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "-1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Very Large Report ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/999999999999999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "999999999999999999999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Zero Report ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "0"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Report ID as String",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/string_id",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "string_id"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Special Characters in Report ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/%40%23%24%25",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "@#$%"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Level Authorization - Empty Report ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Function Level Authorization - Export as Unprivileged User",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_unprivileged}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Broken Object Property Level Authorization - Attempt to Export Non-Redacted Report",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response should not contain sensitive fields like patientName\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.patientName).to.be.undefined;",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export/{{report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export",
+            "{{report_id}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  

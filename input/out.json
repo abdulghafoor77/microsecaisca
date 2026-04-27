@@ -1,0 +1,44 @@
+{
+  "sequence": [
+    {
+      "name": "storeSafe",
+      "method": "POST",
+      "path": "/v1/medical/report/store"
+    },
+    {
+      "name": "login",
+      "method": "POST",
+      "path": "/v1/medical/report/login"
+    },
+    {
+      "name": "deserializeSafe",
+      "method": "POST",
+      "path": "/v1/medical/report/deserialize"
+    },
+    {
+      "name": "findByPatientIdSafe",
+      "method": "GET",
+      "path": "/v1/medical/report/find"
+    },
+    {
+      "name": "exportSingleSafe",
+      "method": "GET",
+      "path": "/v1/medical/report/export/{id}"
+    },
+    {
+      "name": "exportCsvSafe",
+      "method": "GET",
+      "path": "/v1/medical/report/export-csv"
+    },
+    {
+      "name": "exportCsvByIdSafe",
+      "method": "GET",
+      "path": "/v1/medical/report/export-csv/{id}"
+    },
+    {
+      "name": "exportAllSafe",
+      "method": "GET",
+      "path": "/v1/medical/report/export-all"
+    }
+  ]
+}

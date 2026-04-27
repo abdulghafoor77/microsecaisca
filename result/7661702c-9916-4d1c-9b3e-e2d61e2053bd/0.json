@@ -1,0 +1,320 @@
+{
+      "name": "Broken Object Level Authorization - Valid Token, Unauthorized patientId",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{unauthorized_patient_id}}\",\n  \"patientName\": \"Alice Smith\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"A+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. John\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"ECG\",\n  \"diagnosisSummary\": \"Normal\",\n  \"weight\": 65.2,\n  \"height\": 165.5,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T08:30:00Z\",\n  \"updatedAt\": \"2024-06-01T08:30:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Broken Object Level Authorization - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Bob Johnson\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1985-05-15\",\n  \"bloodGroup\": \"O-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Jane\",\n  \"department\": \"Neurology\",\n  \"reportDate\": \"2024-06-05\",\n  \"reportType\": \"MRI\",\n  \"diagnosisSummary\": \"Abnormal\",\n  \"weight\": 78.5,\n  \"height\": 180.2,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 118,\n  \"bloodPressureDiastolic\": 76,\n  \"bodyTemperature\": 37.1,\n  \"prescribedMedications\": \"MedA\",\n  \"lifestyleAdvice\": \"Low salt diet\",\n  \"createdAt\": \"2024-06-05T09:00:00Z\",\n  \"updatedAt\": \"2024-06-05T09:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Security Misconfiguration - Missing Authentication Header",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Charlie Brown\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-12-12\",\n  \"bloodGroup\": \"B+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Who\",\n  \"department\": \"Oncology\",\n  \"reportDate\": \"2024-06-10\",\n  \"reportType\": \"CT Scan\",\n  \"diagnosisSummary\": \"Suspicious mass\",\n  \"weight\": 85.3,\n  \"height\": 175.6,\n  \"pulseRate\": 90,\n  \"bloodPressureSystolic\": 130,\n  \"bloodPressureDiastolic\": 88,\n  \"bodyTemperature\": 38.2,\n  \"prescribedMedications\": \"MedB, MedC\",\n  \"lifestyleAdvice\": \"No smoking\",\n  \"createdAt\": \"2024-06-10T11:15:00Z\",\n  \"updatedAt\": \"2024-06-10T11:15:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Security Misconfiguration - Content-Type Header Manipulation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Dana White\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"2000-07-23\",\n  \"bloodGroup\": \"AB-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. House\",\n  \"department\": \"General\",\n  \"reportDate\": \"2024-06-20\",\n  \"reportType\": \"Blood Test\",\n  \"diagnosisSummary\": \"Normal\",\n  \"weight\": 55.0,\n  \"height\": 160.0,\n  \"pulseRate\": 68,\n  \"bloodPressureSystolic\": 110,\n  \"bloodPressureDiastolic\": 70,\n  \"bodyTemperature\": 36.4,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Eat healthy\",\n  \"createdAt\": \"2024-06-20T09:00:00Z\",\n  \"updatedAt\": \"2024-06-20T09:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Invalid Types",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": 12345,\n  \"patientName\": 67890,\n  \"gender\": 1,\n  \"dateOfBirth\": true,\n  \"bloodGroup\": [\"A+\"],\n  \"doctorId\": false,\n  \"doctorName\": null,\n  \"department\": {},\n  \"reportDate\": \"not-a-date\",\n  \"reportType\": 3.1415,\n  \"diagnosisSummary\": {},\n  \"weight\": \"heavy\",\n  \"height\": \"tall\",\n  \"pulseRate\": \"fast\",\n  \"bloodPressureSystolic\": \"high\",\n  \"bloodPressureDiastolic\": \"low\",\n  \"bodyTemperature\": \"hot\",\n  \"prescribedMedications\": 123,\n  \"lifestyleAdvice\": [],\n  \"createdAt\": \"invalid-date\",\n  \"updatedAt\": \"invalid-date\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Empty Values",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"\",\n  \"patientName\": \"\",\n  \"gender\": \"\",\n  \"dateOfBirth\": \"\",\n  \"bloodGroup\": \"\",\n  \"doctorId\": \"\",\n  \"doctorName\": \"\",\n  \"department\": \"\",\n  \"reportDate\": \"\",\n  \"reportType\": \"\",\n  \"diagnosisSummary\": \"\",\n  \"weight\": \"\",\n  \"height\": \"\",\n  \"pulseRate\": \"\",\n  \"bloodPressureSystolic\": \"\",\n  \"bloodPressureDiastolic\": \"\",\n  \"bodyTemperature\": \"\",\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Large Numbers and Strings",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"" + "A".repeat(1024) + "\",\n  \"patientName\": \"" + "B".repeat(2048) + "\",\n  \"gender\": \"" + "C".repeat(256) + "\",\n  \"dateOfBirth\": \"1800-01-01\",\n  \"bloodGroup\": \"" + "O".repeat(128) + "\",\n  \"doctorId\": \"" + "D".repeat(512) + "\",\n  \"doctorName\": \"" + "E".repeat(512) + "\",\n  \"department\": \"" + "F".repeat(256) + "\",\n  \"reportDate\": \"2099-12-31\",\n  \"reportType\": \"" + "G".repeat(256) + "\",\n  \"diagnosisSummary\": \"" + "H".repeat(4096) + "\",\n  \"weight\": 1000000000,\n  \"height\": 1000000000,\n  \"pulseRate\": 2147483647,\n  \"bloodPressureSystolic\": 2147483647,\n  \"bloodPressureDiastolic\": -2147483648,\n  \"bodyTemperature\": 99999.99999,\n  \"prescribedMedications\": \"" + "I".repeat(4096) + "\",\n  \"lifestyleAdvice\": \"" + "J".repeat(4096) + "\",\n  \"createdAt\": \"2024-06-21T23:59:59Z\",\n  \"updatedAt\": \"2024-06-21T23:59:59Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Negative and Zero Values",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"PNEG123\",\n  \"patientName\": \"Negative Nancy\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1970-01-01\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"DNEG456\",\n  \"doctorName\": \"Dr. Negative\",\n  \"department\": \"Negativeology\",\n  \"reportDate\": \"2024-06-22\",\n  \"reportType\": \"X-Ray\",\n  \"diagnosisSummary\": \"All values negative or zero\",\n  \"weight\": 0,\n  \"height\": -1.5,\n  \"pulseRate\": -10,\n  \"bloodPressureSystolic\": 0,\n  \"bloodPressureDiastolic\": -80,\n  \"bodyTemperature\": -37.0,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Rest\",\n  \"createdAt\": \"2024-06-22T00:00:00Z\",\n  \"updatedAt\": \"2024-06-22T00:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Special Characters & Script Injection",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "store"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"<script>alert('xss')</script>\",\n  \"patientName\": \"O'Reilly \\\"Test\\\" \\u003cimg src=x onerror=alert('xss')\\u003e\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"2024-01-01\",\n  \"bloodGroup\": \"A+\",\n  \"doctorId\": \"<b>doc</b>\",\n  \"doctorName\": \"Dr. <script>evil()</script>\",\n  \"department\": \"General & Emergency\",\n  \"reportDate\": \"2024-06-23\",\n  \"reportType\": \"Injection\\nType\",\n  \"diagnosisSummary\": \"DROP TABLE report; --\",\n  \"weight\": 70,\n  \"height\": 170,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.5,\n  \"prescribedMedications\": \"<svg/onload=alert('med')>\",\n  \"lifestyleAdvice\": \"Eat <i>well</i> &amp; sleep\",\n  \"createdAt\": \"2024-06-23T12:00:00Z\",\n  \"updatedAt\": \"2024-06-23T12:00:00Z\"\n}"
+        }
+      }
+    }
+  

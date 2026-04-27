@@ -1,0 +1,410 @@
+{
+      "name": "Test 1 - Empty Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 2 - Binary Data (Insecure Deserialization Attempt)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "\u0000\u0001\u0002\u0003\u0004\u0005"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 3 - JSON Object (as text)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"result\": \"positive\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 4 - Large Payload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{{very_large_payload}}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 5 - Special Characters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "!@#$%^&*()_+-=[]{}|;':\",.<>/?`~"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 6 - Negative Number String",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "-1234567890"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 7 - Positive Large Number String",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "9999999999999999999999999999"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 8 - Invalid Type (Array as Text)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[1,2,3,4,5]"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 9 - Object Reference Attack (Broken Object Level Authorization)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"reportId\": \"{{other_user_report_id}}\", \"action\": \"view\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 10 - Property Level Privilege Escalation (Broken Object Property Level Authorization)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"isAdmin\": true, \"patientId\": \"12345\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 11 - Sensitive Business Flow (Unrestricted Access)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"action\": \"approveReport\", \"patientId\": \"12345\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Test 12 - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"12345\", \"result\": \"negative\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        }
+      }
+    }
+  ],
+  "event": [

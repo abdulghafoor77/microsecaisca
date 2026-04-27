@@ -1,0 +1,11 @@
+import logging
+
+class RequestFormatter(logging.Formatter):
+    def format(self, record):
+        from flask import has_request_context, g
+        if has_request_context():
+            record.request_token = getattr(g, 'request_token', 'anon')
+        else:
+            record.request_token = 'no-request'
+        return super().format(record)
+

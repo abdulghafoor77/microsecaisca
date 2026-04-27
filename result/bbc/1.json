@@ -1,0 +1,168 @@
+{
+      "name": "Get Report by Valid ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "{{report_id_valid}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Invalid ID (String)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/invalidStringID",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "invalidStringID"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Negative ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/-1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "-1"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Zero ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "0"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Large Integer ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/9223372036854775807",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "9223372036854775807"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Small Integer ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Report by ID with Special Characters",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/%40%23%24%25%5E%26*",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "@#$%^&*"],
+          "query": []
+        }
+      }
+    },
+    {
+      "name": "Get Report by Empty ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", ""]
+        }
+      }
+    },
+    {
+      "name": "Get Report by Another User's ID (BOLA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_other_user}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id_other_user}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "{{report_id_other_user}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Report with Invalid Auth Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "{{report_id_valid}}"]
+        }
+      }
+    },
+    {
+      "name": "Get Report Without Auth Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/reports/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "reports", "{{report_id_valid}}"]
+        }
+      }
+    }
+  

@@ -1,0 +1,286 @@
+{
+      "name": "Count Reports - Valid Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId={{valid_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "{{valid_patient_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Invalid Patient ID (SQLi Attempt)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=1%20OR%201%3D1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "1 OR 1=1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Negative Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=-999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "-999999"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Empty Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Very Large Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=999999999999999999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "999999999999999999999999"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Special Characters in Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=%21%40%23%24%25%5E%26*()",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "!@#$%^&*()"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Invalid Type (Array)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId[]=123&patientId[]=456",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId[]",
+              "value": "123"
+            },
+            {
+              "key": "patientId[]",
+              "value": "456"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Boolean Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "true"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Unauthorized Access (No Token)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId={{valid_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "{{valid_patient_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId={{valid_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "{{valid_patient_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Count Reports - Other User Patient ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/count?patientId={{other_user_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["demo", "count"],
+          "query": [
+            {
+              "key": "patientId",
+              "value": "{{other_user_patient_id}}"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "event": [

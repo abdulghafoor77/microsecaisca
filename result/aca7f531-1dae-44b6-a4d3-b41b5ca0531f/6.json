@@ -1,0 +1,248 @@
+{
+      "name": "Export All Reports - Valid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - No Token (Unauthorized)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - SSRF Attempt via Query Param",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?url=http%3A%2F%2F169.254.169.254%2Flatest%2Fmeta-data",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "url",
+              "value": "http://169.254.169.254/latest/meta-data"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - SSRF via Encoded Localhost",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?url=http%3A%2F%2F127.0.0.1%3A22",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ],
+          "query": [
+            {
+              "key": "url",
+              "value": "http://127.0.0.1:22"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - Security Misconfiguration (Extra Headers)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "127.0.0.1",
+            "type": "text"
+          },
+          {
+            "key": "X-Original-URL",
+            "value": "/admin",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - Security Misconfiguration (Invalid Accept Header)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/xml",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All Reports - Security Misconfiguration (Path Traversal)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all/..%2F..%2Fetc%2Fpasswd",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "export-all",
+            "..%2F..%2Fetc%2Fpasswd"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [

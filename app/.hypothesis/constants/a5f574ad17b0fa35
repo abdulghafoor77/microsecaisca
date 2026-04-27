@@ -1,0 +1,4 @@
+# file: /home/chaincode/.local/bin/celery
+# hypothesis_version: 6.138.2
+
+['__main__']

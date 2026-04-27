@@ -1,0 +1,303 @@
+{
+      "name": "Export All - Valid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Path Tampering (Extra Slash)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Query Injection Attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?filter=%7B%22$ne%22:null%7D",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "filter",
+              "value": "{\"$ne\":null}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Large Numeric Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportId=99999999999999999999999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "reportId",
+              "value": "99999999999999999999999999999"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Negative Numeric Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportId=-12345",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "reportId",
+              "value": "-12345"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Special Characters in Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?patientName=%3Cscript%3Ealert('xss')%3C%2Fscript%3E",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "patientName",
+              "value": "<script>alert('xss')</script>"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Empty Query Values",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?doctorId=&reportType=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "doctorId",
+              "value": ""
+            },
+            {
+              "key": "reportType",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - SQL Injection in Query",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?reportType=' OR 1=1 --",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "reportType",
+              "value": "' OR 1=1 --"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Attempt to Access Unredacted Data (Property Level)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?includePII=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "includePII",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export All - Unrestricted Business Flow (Bulk Export)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?bulk=true&limit=100000",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "bulk",
+              "value": "true"
+            },
+            {
+              "key": "limit",
+              "value": "100000"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  

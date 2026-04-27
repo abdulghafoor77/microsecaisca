@@ -1,0 +1,8 @@
+[2025-12-04 12:33:28] [LoggerTest.py:35] [INFO] - Application started
+[2025-12-04 12:33:28] [LoggerTest.py:36] [ERROR] - Something went wrong!
+[2025-12-04 12:39:23] [LoggerTest.py:36] [INFO] - Application started
+[2025-12-04 12:39:23] [LoggerTest.py:37] [ERROR] - Something went wrong!
+[2025-12-04 12:40:25] [LoggerTest.py:38] [INFO] - Application started
+[2025-12-04 12:40:25] [LoggerTest.py:39] [ERROR] - Something went wrong!
+[2025-12-04 12:41:49] [LoggerTest.py:39] [INFO] - Application started
+[2025-12-04 12:41:49] [LoggerTest.py:40] [ERROR] - Something went wrong!

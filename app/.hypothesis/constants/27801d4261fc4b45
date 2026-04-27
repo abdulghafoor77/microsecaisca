@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/config.py
+# hypothesis_version: 6.138.2
+
+['Azby1029', 'acme_db', 'database', 'dbuser', 'host', 'localhost', 'password', 'user']

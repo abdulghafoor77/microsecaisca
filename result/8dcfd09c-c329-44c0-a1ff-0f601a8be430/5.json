@@ -1,0 +1,175 @@
+{
+      "name": "Export CSV - Valid ID, Valid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "{{report_id_valid}}"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Valid ID, Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_invalid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "{{report_id_valid}}"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Valid ID, No Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/{{report_id_valid}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "{{report_id_valid}}"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - ID of Another User",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/{{report_id_other_user}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "{{report_id_other_user}}"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Negative ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/-1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "-1"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Zero ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/0",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "0"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Large ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/999999999999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "999999999999999999"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Special Characters in ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/%24%26*%21",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "$&*!"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Empty ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", ""]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Non-integer ID (String)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/notanumber",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "notanumber"]
+        }
+      }
+    },
+    {
+      "name": "Export CSV - Float ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv/3.14159",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv", "3.14159"]
+        }
+      }
+    }
+  

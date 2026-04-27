@@ -1,0 +1,495 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization - Access another user's report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{other_patientId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{other_patientId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - No token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patientId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patientId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patientId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patientId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Access sensitive property",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patientId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patientId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Use doctorId as patientId",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{doctorId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{doctorId}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API7:2023 - Server Side Request Forgery - Malicious URL in pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=http%3A%2F%2Fevil.com%2Fmalicious",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "http://evil.com/malicious"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - SQL Injection attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=' OR '1'='1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "' OR '1'='1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - XSS attempt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%3Cscript%3Ealert('XSS')%3C%2Fscript%3E",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "<script>alert('XSS')</script>"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "API9:2023 - Improper Inventory Management - Unknown parameter",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{patientId}}&unknownParam=unknownValue",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{patientId}}"
+            },
+            {
+              "key": "unknownParam",
+              "value": "unknownValue"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Empty pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - pid with special characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=%40%23%24%25%5E%26*",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "@#$%^&*"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - pid as very large number",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=999999999999999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "999999999999999999999"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - pid as negative number",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=-12345",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "-12345"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - pid as boolean",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=true",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "true"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - pid as null string",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=null",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "find"
+          ],
+          "query": [
+            {
+              "key": "pid",
+              "value": "null"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "event": [

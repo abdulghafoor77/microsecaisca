@@ -1,0 +1,189 @@
+[2025-10-07 14:32:20] [app.py:64] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:32:20] [app.py:64] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:32:20] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:32:20] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:32:20] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:32:22] [app.py:64] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:32:22] [app.py:64] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:32:22] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:32:22] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:33:44] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:33:44] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:33:45] [app.py:63] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:33:45] [app.py:63] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:33:45] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:33:45] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:34:35] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:34:35] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:34:36] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:34:36] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:34:36] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:34:36] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:35:13] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:35:13] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:35:13] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:35:13] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:35:13] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:35:15] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:35:15] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:35:15] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:35:15] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:36:08] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:36:09] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:36:39] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:36:39] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:36:39] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:36:39] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:36:39] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:36:40] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:36:40] [app.py:137] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:36:40] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:36:40] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:38:49] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:38:49] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:38:51] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:38:51] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:38:51] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:38:51] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:38:58] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:38:58] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:38:58] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:38:58] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:38:58] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:39:00] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:39:00] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:39:00] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:39:00] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:44:58] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/create_db.py', reloading
+[2025-10-07 14:44:58] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:45:00] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:00] [app.py:142] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:00] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:45:00] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:45:34] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:45:34] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:45:35] [app.py:134] [INFO] [token=no-request] - Successfully created database !
+[2025-10-07 14:45:35] [app.py:134] [INFO] [token=no-request] - Successfully created database !
+[2025-10-07 14:45:35] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:35] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:35] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:45:35] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:45:55] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:45:55] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:45:56] [app.py:134] [INFO] [token=no-request] - Successfully created database acme_db!
+[2025-10-07 14:45:56] [app.py:134] [INFO] [token=no-request] - Successfully created database acme_db!
+[2025-10-07 14:45:57] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:57] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:45:57] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:45:57] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:46:23] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:46:23] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:46:24] [app.py:134] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:46:24] [app.py:134] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:46:24] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:46:24] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:46:24] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:46:24] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:46:37] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:46:37] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:46:38] [app.py:134] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:46:38] [app.py:134] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:46:38] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:46:38] [app.py:143] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:47:53] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:47:53] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:47:53] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:47:53] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:47:53] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:47:53] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:47:53] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:47:54] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:47:54] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:47:54] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:47:54] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:47:54] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:47:54] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:48:02] [app.py:67] [INFO] [token=e4c1ea546c] - Request received !
+[2025-10-07 14:48:02] [app.py:67] [INFO] [token=e4c1ea546c] - Request received !
+[2025-10-07 14:48:02] [app.py:75] [INFO] [token=e4c1ea546c] - Data extracted from request !
+[2025-10-07 14:48:02] [app.py:75] [INFO] [token=e4c1ea546c] - Data extracted from request !
+[2025-10-07 14:48:02] [app.py:103] [ERROR] [token=e4c1ea546c] - Processing request for vulernability test cases generation !
+[2025-10-07 14:48:02] [app.py:103] [ERROR] [token=e4c1ea546c] - Processing request for vulernability test cases generation !
+[2025-10-07 14:48:02] [_internal.py:96] [INFO] [token=no-request] - 127.0.0.1 - - [07/Oct/2025 14:48:02] "POST /upload HTTP/1.1" 200 -
+[2025-10-07 14:48:47] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:48:47] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:48:48] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:48:48] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:48:48] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:48:48] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:48:48] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:48:48] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:49:01] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:49:02] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:51:34] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:51:34] [app.py:131] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:51:34] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:51:34] [app.py:140] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:51:34] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:51:34] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:52:13] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:52:14] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:52:14] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:52:14] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:52:14] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:52:29] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:52:29] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:52:29] [_internal.py:96] [INFO] [token=no-request] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-10-07 14:52:29] [_internal.py:96] [INFO] [token=no-request] - [33mPress CTRL+C to quit[0m
+[2025-10-07 14:52:29] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:52:30] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:52:31] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:52:31] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:52:31] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 14:52:38] [app.py:63] [INFO] [token=c690a45ca3] - Request received !
+[2025-10-07 14:52:38] [app.py:71] [INFO] [token=c690a45ca3] - Data extracted from request !
+[2025-10-07 14:52:38] [app.py:99] [ERROR] [token=c690a45ca3] - Processing request for vulernability test cases generation !
+[2025-10-07 14:52:38] [_internal.py:96] [INFO] [token=no-request] - 127.0.0.1 - - [07/Oct/2025 14:52:38] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+[2025-10-07 14:53:42] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 14:53:42] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 14:53:43] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 14:53:43] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 14:53:43] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 14:53:43] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 15:03:11] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/ACME.py', reloading
+[2025-10-07 15:03:11] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 15:03:12] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 15:03:12] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 15:03:12] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 15:03:12] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 15:03:25] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/ACME.py', reloading
+[2025-10-07 15:03:25] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 15:03:26] [app.py:127] [INFO] [token=no-request] - Successfully created database 'acme_db'!
+[2025-10-07 15:03:26] [app.py:136] [INFO] [token=no-request] - Successfully created persistant schema !
+[2025-10-07 15:03:26] [_internal.py:96] [WARNING] [token=no-request] -  * Debugger is active!
+[2025-10-07 15:03:26] [_internal.py:96] [INFO] [token=no-request] -  * Debugger PIN: 628-122-199
+[2025-10-07 15:54:17] [_internal.py:96] [INFO] [token=no-request] -  * Detected change in '/home/chaincode/Desktop/acmeimp/microsecai/app/app.py', reloading
+[2025-10-07 15:54:17] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 16:09:53] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 16:13:06] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 16:18:01] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 16:20:35] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat
+[2025-10-07 16:20:58] [_internal.py:96] [INFO] [token=no-request] -  * Restarting with stat

@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_utils.py
+# hypothesis_version: 6.138.2
+
+[99999999, '   %s\n', '   self: ', ' % (', ' Thread %s', '%s', '%s\n', '%s: %.2fs', '(', ', ', ',)', '.', '/', 'Elapsed:', 'Threads running\n', '__class__', '__code__', '__loader__', '__main__', 'class variables', 'func_code', 'function variables', 'gevent.monkey', 'globals', 'ignore', 'interrupt_main', 'locals', 'main_thread', 'nt', 'posix', 'protected variables', 'scope', 'self', 'special variables', 'variable_reference', '{', '}']

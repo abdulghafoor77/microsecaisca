@@ -1,0 +1,4 @@
+# file: /usr/lib/python3/dist-packages/pkg_resources/_vendor/packaging/_musllinux.py
+# hypothesis_version: 6.138.2
+
+[b'\x7fELF', '\x00', '-', '16B', 'HHI', 'IIIIHHH', 'IIIIIIII', 'IIQQQQQQ', 'QQQIHHH', 'Version (\\d+)\\.(\\d+)', '[.-]', '_', '__main__', 'linux-', 'musl', 'musl:', 'not linux', 'plat:', 'rb', 'tags:']

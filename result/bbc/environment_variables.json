@@ -1,0 +1,94 @@
+{
+    "id": "28b5150d-3828-494a-8300-cf9230675c70",
+    "name": "ACME Environment variables",
+    "values": [
+        {
+            "key": "expired_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "owned_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "report_id_valid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "large_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_patient_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_user_patient_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_user_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "report_id_other_user",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "invalid_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "auth_token_valid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "auth_token_other_user",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "unauthorized_reportId",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "auth_token_invalid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_reportId",
+            "value": "",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2025-11-17T14:16:43.103275Z",
+    "_postman_exported_using": "Python Script"
+}

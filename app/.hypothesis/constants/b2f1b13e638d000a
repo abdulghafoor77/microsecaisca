@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_net_command_factory_json.py
+# hypothesis_version: 6.138.2
+
+['\n\n%s\n', ' (Current frame)', '%s : %d', '%s in %s', '%s.%s', '.py', '<module>', '<unknown>', 'IS_PLUGIN_FRAME', '__name__', '__package__', '__version__', 'breakpoint', 'co_lnotab', 'completions', 'console', 'entry', 'exception', 'exited', 'function breakpoint', 'goto', 'important', 'line', 'module', 'new', 'package', 'path', 'pause', 'processReplaced', 'sourceReference', 'stackTrace', 'started', 'stderr', 'stdout', 'step', 'subtle', 'threads']

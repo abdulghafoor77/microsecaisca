@@ -1,0 +1,249 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization - Store report as another patient",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{other_patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"Annual\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 70,\n  \"height\": 175,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Continue as is\",\n  \"createdAt\": \"2024-06-15T12:00:00Z\",\n  \"updatedAt\": \"2024-06-15T12:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid token",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{invalid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Jane Roe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1980-10-10\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Dermatology\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"Initial\",\n  \"diagnosisSummary\": \"Allergy\",\n  \"weight\": 55,\n  \"height\": 160,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 115,\n  \"bloodPressureDiastolic\": 75,\n  \"bodyTemperature\": 37.1,\n  \"prescribedMedications\": \"Antihistamine\",\n  \"lifestyleAdvice\": \"Avoid allergens\",\n  \"createdAt\": \"2024-06-15T12:30:00Z\",\n  \"updatedAt\": \"2024-06-15T12:30:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Attempt to set read-only fields",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Jane Roe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1980-10-10\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Dermatology\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"Initial\",\n  \"diagnosisSummary\": \"Allergy\",\n  \"weight\": 55,\n  \"height\": 160,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 115,\n  \"bloodPressureDiastolic\": 75,\n  \"bodyTemperature\": 37.1,\n  \"prescribedMedications\": \"Antihistamine\",\n  \"lifestyleAdvice\": \"Avoid allergens\",\n  \"createdAt\": \"2015-01-01T00:00:00Z\", \n  \"updatedAt\": \"2015-01-01T00:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Store report as doctor (unauthorized role)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{doctor_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Jane Roe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1980-10-10\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Dermatology\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"Initial\",\n  \"diagnosisSummary\": \"Allergy\",\n  \"weight\": 55,\n  \"height\": 160,\n  \"pulseRate\": 80,\n  \"bloodPressureSystolic\": 115,\n  \"bloodPressureDiastolic\": 75,\n  \"bodyTemperature\": 37.1,\n  \"prescribedMedications\": \"Antihistamine\",\n  \"lifestyleAdvice\": \"Avoid allergens\",\n  \"createdAt\": \"2024-06-15T12:30:00Z\",\n  \"updatedAt\": \"2024-06-15T12:30:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Invalid Data Types",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": 12345,\n  \"patientName\": [\"Jane\", \"Roe\"],\n  \"gender\": true,\n  \"dateOfBirth\": \"not-a-date\",\n  \"bloodGroup\": 0,\n  \"doctorId\": {},\n  \"doctorName\": null,\n  \"department\": \"\",\n  \"reportDate\": 99999,\n  \"reportType\": false,\n  \"diagnosisSummary\": {},\n  \"weight\": \"heavy\",\n  \"height\": \"tall\",\n  \"pulseRate\": \"fast\",\n  \"bloodPressureSystolic\": \"high\",\n  \"bloodPressureDiastolic\": \"low\",\n  \"bodyTemperature\": \"hot\",\n  \"prescribedMedications\": [],\n  \"lifestyleAdvice\": 100,\n  \"createdAt\": 42,\n  \"updatedAt\": false\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Large/Small/Negative Numbers",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"Big Small\",\n  \"gender\": \"other\",\n  \"dateOfBirth\": \"2000-02-29\",\n  \"bloodGroup\": \"AB-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Huge\",\n  \"department\": \"Endocrinology\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"Annual\",\n  \"diagnosisSummary\": \"Check for abnormal values\",\n  \"weight\": -999999,\n  \"height\": 0,\n  \"pulseRate\": 2147483647,\n  \"bloodPressureSystolic\": -120,\n  \"bloodPressureDiastolic\": 99999999,\n  \"bodyTemperature\": 1e308,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"2024-06-15T12:00:00Z\",\n  \"updatedAt\": \"2024-06-15T12:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Special Characters and Injection",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"<script>alert(1)</script>\",\n  \"gender\": \"male'; DROP TABLE users;--\",\n  \"dateOfBirth\": \"1999-12-31\",\n  \"bloodGroup\": \"O+' OR '1'='1\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"\\u202Eevil\",\n  \"department\": \"Cardiology\\u0000\",\n  \"reportDate\": \"2024-06-15\",\n  \"reportType\": \"\\\" OR 1=1 --\",\n  \"diagnosisSummary\": \"<img src=x onerror=alert('xss')>\",\n  \"weight\": 70,\n  \"height\": 175,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"SELECT * FROM medications;\",\n  \"lifestyleAdvice\": \"<svg/onload=alert('svg')>\",\n  \"createdAt\": \"2024-06-15T12:00:00Z\",\n  \"updatedAt\": \"2024-06-15T12:00:00Z\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    },
+    {
+      "name": "Edge Case - Empty and Missing Fields",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            { "key": "token", "value": "{{valid_token}}", "type": "string" }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"\",\n  \"patientName\": \"\",\n  \"gender\": \"\",\n  \"dateOfBirth\": \"\",\n  \"bloodGroup\": \"\",\n  \"doctorId\": \"\",\n  \"doctorName\": \"\",\n  \"department\": \"\",\n  \"reportDate\": \"\",\n  \"reportType\": \"\",\n  \"diagnosisSummary\": \"\",\n  \"weight\": 0,\n  \"height\": 0,\n  \"pulseRate\": 0,\n  \"bloodPressureSystolic\": 0,\n  \"bloodPressureDiastolic\": 0,\n  \"bodyTemperature\": 0,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "store"]
+        }
+      }
+    }
+  

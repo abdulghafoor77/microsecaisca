@@ -1,0 +1,211 @@
+{
+      "name": "Store Report - Valid Token, Valid Payload",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Invalid patientId Type (Number)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": 12345,\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Negative Numbers in Vitals",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": -70.0,\n  \"height\": -180.0,\n  \"pulseRate\": -60,\n  \"bloodPressureSystolic\": -120,\n  \"bloodPressureDiastolic\": -80,\n  \"bodyTemperature\": -36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Extremely Large Numbers",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 1e50,\n  \"height\": 1e50,\n  \"pulseRate\": 2147483647,\n  \"bloodPressureSystolic\": 2147483647,\n  \"bloodPressureDiastolic\": 2147483647,\n  \"bodyTemperature\": 1e50,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Special Characters Injection",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"<script>alert('xss')</script>\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"OR 1=1; --\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"<img src=x onerror=alert('hack')>\",\n  \"lifestyleAdvice\": \"DROP TABLE medical_reports;\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Empty Required Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"\",\n  \"patientName\": \"\",\n  \"gender\": \"\",\n  \"dateOfBirth\": \"\",\n  \"bloodGroup\": \"\",\n  \"doctorId\": \"\",\n  \"doctorName\": \"\",\n  \"department\": \"\",\n  \"reportDate\": \"\",\n  \"reportType\": \"\",\n  \"diagnosisSummary\": \"\",\n  \"weight\": 0,\n  \"height\": 0,\n  \"pulseRate\": 0,\n  \"bloodPressureSystolic\": 0,\n  \"bloodPressureDiastolic\": 0,\n  \"bodyTemperature\": 0,\n  \"prescribedMedications\": \"\",\n  \"lifestyleAdvice\": \"\",\n  \"createdAt\": \"\",\n  \"updatedAt\": \"\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Unauthorized Property Injection",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\",\n  \"isAdmin\": true,\n  \"role\": \"superuser\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Unrestricted Access to Business Flows (reportDate in future)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2099-12-31\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_invalid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id}}\",\n  \"patientName\": \"John Doe\",\n  \"gender\": \"male\",\n  \"dateOfBirth\": \"1980-01-01\",\n  \"bloodGroup\": \"O+\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 75.5,\n  \"height\": 180.2,\n  \"pulseRate\": 70,\n  \"bloodPressureSystolic\": 120,\n  \"bloodPressureDiastolic\": 80,\n  \"bodyTemperature\": 36.6,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Store Report - Valid Token, Different User's patientId",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{auth_token_valid}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/store",
+          "protocol": "http",
+          "host": [ "localhost" ],
+          "port": "8080",
+          "path": [ "v1", "medical", "report", "store" ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patientId\": \"{{patient_id_other}}\",\n  \"patientName\": \"Jane Roe\",\n  \"gender\": \"female\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"bloodGroup\": \"A-\",\n  \"doctorId\": \"{{doctor_id}}\",\n  \"doctorName\": \"Dr. Smith\",\n  \"department\": \"Cardiology\",\n  \"reportDate\": \"2024-06-01\",\n  \"reportType\": \"Annual Checkup\",\n  \"diagnosisSummary\": \"Healthy\",\n  \"weight\": 60.5,\n  \"height\": 170.2,\n  \"pulseRate\": 72,\n  \"bloodPressureSystolic\": 118,\n  \"bloodPressureDiastolic\": 78,\n  \"bodyTemperature\": 37.0,\n  \"prescribedMedications\": \"None\",\n  \"lifestyleAdvice\": \"Exercise regularly\",\n  \"createdAt\": \"2024-06-01T10:00:00Z\",\n  \"updatedAt\": \"2024-06-01T10:00:00Z\"\n}"
+        }
+      }
+    }
+  

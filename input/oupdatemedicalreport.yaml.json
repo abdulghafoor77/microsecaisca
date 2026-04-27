@@ -1,0 +1,747 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Demo REST API",
+        "description": "Spring Boot API with public and protected endpoints documented using OpenAPI 3.",
+        "contact": {
+            "name": "API Support",
+            "url": "https://example.com",
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://springdoc.org"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Local Server"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Endpoints for login and JWT issuance"
+        },
+        {
+            "name": "User Management",
+            "description": "Create / read / update / delete users and auth operations"
+        },
+        {
+            "name": "Vulnerabilities Demo",
+            "description": "OWASP Top 10 demonstration for API1:2023 - Broken Object Level Authorization "
+        },
+        {
+            "name": "Auth Demo (API2:2023)",
+            "description": "Vulnerable vs Safe endpoints illustrating broken authentication patterns"
+        },
+        {
+            "name": "Medical Report Demo",
+            "description": "Most of othese enpoints are generic and may not be safe "
+        }
+    ],
+    "paths": {
+        "/v1/medical/report/store": {
+            "post": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Store report (sanitized)",
+                "description": "Sanitize inputs before persisting.",
+                "operationId": "storeSafe",
+                "requestBody": {
+                    "description": "MedicalReport JSON",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MedicalReportReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Saved sanitized report",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReportReq"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/medical/report/jado": {
+            "post": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "loginreport (sanitized)",
+                "description": "Sanitize inputs before persisting.",
+                "operationId": "jado",
+                "requestBody": {
+                    "description": "MedicalReport JSON",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Saved sanitized report",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginReq"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginReq"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/medical/report/deserialize": {
+            "post": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Reject insecure deserialization",
+                "description": "Rejects binary deserialization and asks for JSON instead.",
+                "operationId": "deserializeSafe",
+                "requestBody": {
+                    "content": {
+                        "text/plain": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "400": {
+                        "description": "Deserialization disabled",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/medical/report/find": {
+            "get": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Find reports (JPA/parameterized)",
+                "description": "Search by patientId safely (JPA parameterized).",
+                "operationId": "findByPatientIdSafe",
+                "parameters": [
+                    {
+                        "name": "pid",
+                        "in": "query",
+                        "description": "patientId pattern",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Paged results",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MedicalReport"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/medical/report/export/{id}": {
+            "get": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Export single report (redacted)",
+                "description": "Return a single redacted report by ID.",
+                "operationId": "exportSingleSafe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Report ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Redacted report",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Report not found",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MedicalReport"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/medical/report/export-csv": {
+            "get": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Export all reports as CSV (redacted)",
+                "description": "Exports all reports as CSV with sensitive fields redacted.",
+                "operationId": "exportCsvSafe",
+                "responses": {
+                    "200": {
+                        "description": "CSV exported",
+                        "content": {
+                            "text/csv": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "text/csv": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/medical/report/export-csv/{id}": {
+            "get": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Export single report as CSV (redacted)",
+                "description": "Exports a single report as CSV with sensitive fields redacted.",
+                "operationId": "exportCsvByIdSafe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Report ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CSV exported",
+                        "content": {
+                            "text/csv": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "text/csv": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Report not found",
+                        "content": {
+                            "text/csv": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/v1/medical/report/export-all": {
+            "get": {
+                "tags": [
+                    "Medical Report Demo"
+                ],
+                "summary": "Export all (redacted)",
+                "description": "Return redacted results (no PII).",
+                "operationId": "exportAllSafe",
+                "responses": {
+                    "200": {
+                        "description": "Redacted list",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MedicalReport"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/MedicalReport"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "MedicalReport": {
+                "type": "object",
+                "properties": {
+                    "reportId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "patientId": {
+                        "type": "string"
+                    },
+                    "patientName": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "dateOfBirth": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "bloodGroup": {
+                        "type": "string"
+                    },
+                    "doctorId": {
+                        "type": "string"
+                    },
+                    "doctorName": {
+                        "type": "string"
+                    },
+                    "department": {
+                        "type": "string"
+                    },
+                    "reportDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "reportType": {
+                        "type": "string"
+                    },
+                    "diagnosisSummary": {
+                        "type": "string"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "height": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pulseRate": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureSystolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureDiastolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bodyTemperature": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "prescribedMedications": {
+                        "type": "string"
+                    },
+                    "lifestyleAdvice": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "LoginReq": {
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "example": "NewPassword@123"
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "abc@xyz.com"
+                    }
+                },
+                "description": "Fields allowed to perform login (password plaintext if provided)"
+            },
+            "UpdateUserDTO": {
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "example": "NewPassword@123"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "ADMIN"
+                    }
+                },
+                "description": "Fields allowed to update (password plaintext if provided)"
+            },
+            "UserDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "alice"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "USER"
+                    }
+                },
+                "description": "User data returned by the API (password omitted)"
+            },
+            "MedicalReportReq": {
+                "type": "object",
+                "properties": {
+                    "patientId": {
+                        "type": "string"
+                    },
+                    "patientName": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "dateOfBirth": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "bloodGroup": {
+                        "type": "string"
+                    },
+                    "doctorId": {
+                        "type": "string"
+                    },
+                    "doctorName": {
+                        "type": "string"
+                    },
+                    "department": {
+                        "type": "string"
+                    },
+                    "reportDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "reportType": {
+                        "type": "string"
+                    },
+                    "diagnosisSummary": {
+                        "type": "string"
+                    },
+                    "weight": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "height": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "pulseRate": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureSystolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bloodPressureDiastolic": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "bodyTemperature": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "prescribedMedications": {
+                        "type": "string"
+                    },
+                    "lifestyleAdvice": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "CreateUserDTO": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "example": "alice"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "Password@123"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "USER"
+                    }
+                },
+                "description": "Payload to create a user (plaintext password supplied here)"
+            },
+            "PageUserDTO": {
+                "type": "object",
+                "properties": {
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/PageableObject"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserDTO"
+                        }
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortObject"
+                        }
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageableObject": {
+                "type": "object",
+                "properties": {
+                    "paged": {
+                        "type": "boolean"
+                    },
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "sort": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortObject"
+                        }
+                    },
+                    "unpaged": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "SortObject": {
+                "type": "object",
+                "properties": {
+                    "direction": {
+                        "type": "string"
+                    },
+                    "nullHandling": {
+                        "type": "string"
+                    },
+                    "ascending": {
+                        "type": "boolean"
+                    },
+                    "property": {
+                        "type": "string"
+                    },
+                    "ignoreCase": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "JWT Bearer token authentication",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}

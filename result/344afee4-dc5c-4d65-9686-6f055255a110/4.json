@@ -1,0 +1,148 @@
+{
+      "name": "Export CSV - No Auth (API1, API5, API6, API8)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export CSV - Invalid Token (API1, API5, API6)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export CSV - Valid Token, Tampered Query (API1, API3, API6, API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?reportId=-9999999999999999&field=patient_ssn%00&field=doctor_notes&field=%20&field=☠️",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv"],
+          "query": [
+            {
+              "key": "reportId",
+              "value": "-9999999999999999"
+            },
+            {
+              "key": "field",
+              "value": "patient_ssn%00"
+            },
+            {
+              "key": "field",
+              "value": "doctor_notes"
+            },
+            {
+              "key": "field",
+              "value": " "
+            },
+            {
+              "key": "field",
+              "value": "☠️"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export CSV - Large Query Values (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv?reportId=999999999999999999999999999999999999999999999999999999999999999999999999999999&field=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv"],
+          "query": [
+            {
+              "key": "reportId",
+              "value": "999999999999999999999999999999999999999999999999999999999999999999999999999999"
+            },
+            {
+              "key": "field",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export CSV - Special Characters in Path (API8)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv%252F..%252Fsecret.csv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv%252F..%252Fsecret.csv"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Export CSV - Valid Token (Baseline)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-csv",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-csv"]
+        }
+      },
+      "response": []
+    }
+  

@@ -1,0 +1,195 @@
+{
+      "name": "Export All - No Auth (Unauthenticated Access)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Valid Token (Expected Success)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Invalid Token (Malformed Token)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Expired Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{expired_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Special Characters in Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer !@#$%^&*()_+|}{\":?><,./;'[]\\=-`~",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Empty Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer ",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Very Large Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{large_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Export All - Negative Token Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer -1234567890",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/export-all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "export-all"
+          ]
+        }
+      }
+    }
+  

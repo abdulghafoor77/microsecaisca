@@ -1,0 +1,256 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization - Access Another Patient's Report",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{other_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{other_patient_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - No Token",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{own_patient_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API2:2023 - Broken Authentication - Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{own_patient_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Edge Case: Special Characters in pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=!@#$%^&*()_+-=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "!@#$%^&*()_+-="
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Edge Case: Empty pid Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Edge Case: Numeric pid (Very Large Number)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=999999999999999999999999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "999999999999999999999999999999"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API3:2023 - Broken Object Property Level Authorization - Edge Case: Numeric pid (Negative Number)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=-12345",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "-12345"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Access with Role:Doctor Token (Should Fail for Patient Data)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{doctor_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{own_patient_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API5:2023 - Broken Function Level Authorization - Access with Role:Admin Token (Should Fail for Patient Data)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid={{own_patient_id}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "{{own_patient_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "API1:2023 - Broken Object Level Authorization - SQLi Attempt in pid",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/find?pid=' OR 1=1 --",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "find"],
+          "query": [
+            {
+              "key": "pid",
+              "value": "' OR 1=1 --"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [

@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydev_bundle/_pydev_imports_tipper.py
+# hypothesis_version: 6.138.2
+
+[1000, '%s=%s', '(', '(%s)', '()', '(self', '(self)', '(self:', ')', ',', ', ', '-', '--', '->', '.', '.py', '.pyc', '.pyo', '0', '1', '2', '3', '4', '5', 'Unable to import', '[', '_', '__class__', '__dict__', '__file__', '__name__', 'cli', 'trying with']

@@ -1,0 +1,341 @@
+{
+      "name": "Valid Report ID (Authorized)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id={{valid_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{valid_report_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Access Another User's Report (BOLA Test)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id={{other_user_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{other_user_report_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Invalid Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id={{valid_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{valid_report_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Missing Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id={{valid_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{valid_report_id}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Negative ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=-1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "-1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Zero ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Very Large Integer ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=999999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "999999999999"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Non-integer ID (String)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=abc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "abc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "ID with Special Characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=%40%23%24%25%5E%26*()",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "@#$%^&*()"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Empty ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv?id=",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "No ID Parameter",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/export-csv",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "export-csv"
+          ]
+        }
+      }
+    }
+  

@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/CLI.py
+# hypothesis_version: 6.138.2
+
+['--attributes', '--file', '--output', '--testcase', '--vul', '-a', '-f', '-o', '-t', '-v', 'Attributes JSON file', 'Exit the program', 'Input file', 'Output report file', 'Test case file', 'Vulnerability file', '__main__', 'acme-cli', 'acme> ', 'command', 'exit', 'gt', 'id', 'isconsider', 'reinit', 'run', 'vulnerability']

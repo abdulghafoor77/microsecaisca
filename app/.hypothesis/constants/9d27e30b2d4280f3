@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/email_utils.py
+# hypothesis_version: 6.138.2
+
+[587, 'EMAIL', 'From', 'SECRET', 'Subject', 'To', '__main__', 'aghafoor77@gmail.com', 'smtp.gmail.com']

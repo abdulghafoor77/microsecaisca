@@ -1,0 +1,461 @@
+{
+      "name": "API1:2023 - Broken Object Level Authorization - No Auth",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\":\"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "API1:2023 - Broken Object Level Authorization - Invalid Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\":\"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "API1:2023 - Broken Object Level Authorization - Valid Token, Unauthorized ID",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\":\"{{unauthorized_patient_id}}\"}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Content-Type as application/x-java-serialized-object",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-java-serialized-object",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "rO0ABXNyABFqYXZhLnV0aWwuQXJyYXlMaXN0x9b6Dk1UJ4sCAAFMAARsaXN0dAASTGphdmEvdXRpbC9MaXN0O3hw"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Content-Type as text/plain with binary",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "rO0ABXNyABFqYXZhLnV0aWwuQXJyYXlMaXN0x9b6Dk1UJ4sCAAFMAARsaXN0dAASTGphdmEvdXRpbC9MaXN0O3hw"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Accept application/java-serialized-object",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/java-serialized-object",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"123456\"}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Empty Body",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Special Characters",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"!@#$%^&*()_+-=[]{};':,./<>?\\\"|\"}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Large Number",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": 99999999999999999999999999}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Negative Number",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": -123456}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - String Instead of Object",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "\"justastring\""
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Array Instead of Object",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "[1,2,3,4]"
+        }
+      }
+    },
+    {
+      "name": "API7:2023 - SSRF - Malicious URL in patientId",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"http://169.254.169.254/latest/meta-data/\"}"
+        }
+      }
+    },
+    {
+      "name": "API7:2023 - SSRF - file:// URL in patientId",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": \"file:///etc/passwd\"}"
+        }
+      }
+    },
+    {
+      "name": "API8:2023 - Security Misconfiguration - Null Value",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "text/plain",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/deserialize",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "v1",
+            "medical",
+            "report",
+            "deserialize"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"patientId\": null}"
+        }
+      }
+    }
+  ],
+  "event": [

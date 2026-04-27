@@ -1,0 +1,4 @@
+# file: /home/chaincode/.vscode/extensions/ms-python.python-2023.14.0/pythonFiles/lib/python/debugpy/adapter/../../debugpy/launcher/../../debugpy/../debugpy/__init__.py
+# hypothesis_version: 6.138.2
+
+['__version__', 'breakpoint', 'configure', 'connect', 'debug_this_thread', 'is_client_connected', 'listen', 'log_to', 'trace_this_thread', 'wait_for_client']

@@ -1,0 +1,4 @@
+# file: /usr/lib/python3/dist-packages/pkg_resources/_vendor/packaging/_manylinux.py
+# hypothesis_version: 6.138.2
+
+[1024, 83886080, 2135247942, 4278190080, '<H', '<I', '<Q', '>H', '>I', '>Q', 'B', 'CS_GNU_LIBC_VERSION', 'aarch64', 'armv7l', 'ascii', 'i686', 'linux', 'major', 'manylinux1', 'manylinux2010', 'manylinux2014', 'manylinux_compatible', 'manylinux_{}_{}', 'minor', 'ppc64', 'ppc64le', 'rb', 's390x', 'x86_64']

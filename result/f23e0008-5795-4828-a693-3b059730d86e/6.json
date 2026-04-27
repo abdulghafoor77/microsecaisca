@@ -1,0 +1,283 @@
+{
+      "name": "01 - Valid Token - Export All Reports",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "02 - No Token (Broken Auth)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "03 - Invalid/Expired Token (Broken Auth)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{invalid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "04 - SQL/Command Injection in Headers (Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "127.0.0.1; DROP TABLE users;"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "05 - SSRF via Host Header",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "Host",
+            "value": "evil.com"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "06 - SSRF via X-Forwarded-Host Header",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "X-Forwarded-Host",
+            "value": "169.254.169.254"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "07 - Large Header Values (Buffer Overflow/Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "X-Custom-Overflow",
+            "value": "{{large_value}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "08 - Accept Header Injection",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json\r\nContent-Length:0\r\nTest:malicious"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "09 - Path Traversal in URL (Improper Inventory Management)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/../../admin/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "..", "..", "admin", "export-all"]
+        }
+      }
+    },
+    {
+      "name": "10 - Access Deprecated Endpoint (Improper Inventory Management)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all-old",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all-old"]
+        }
+      }
+    },
+    {
+      "name": "11 - Very Large Query String (DoS/Misconfiguration)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?{{large_query}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "{{large_query}}",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "12 - Special Characters in Query String (Edge Case)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all?weird=☠️%20%00%FF%20%22%3C%3E%27",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"],
+          "query": [
+            {
+              "key": "weird",
+              "value": "☠️ %00%FF \"%3C%3E'"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "13 - Attempt POST to GET endpoint (Function Level)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{valid_token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"malicious\": \"test\", \"reportId\": -999999999999999, \"patientName\": \"<script>alert(1)</script>\"}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/v1/medical/report/export-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["v1", "medical", "report", "export-all"]
+        }
+      }
+    }
+  

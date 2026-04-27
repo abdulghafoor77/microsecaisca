@@ -1,0 +1,5 @@
+# Any "__pycache__" directories
+__pycache__/
+
+### macOS ###
+.DS_Store

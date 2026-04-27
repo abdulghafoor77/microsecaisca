@@ -1,0 +1,129 @@
+{
+    "id": "c9b52f4f-557e-4d03-afa4-e3a270e4fcf4",
+    "name": "ACME Environment variables",
+    "values": [
+        {
+            "key": "victim_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt161",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "report_id_valid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_auth_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "auth_token_valid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "own_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt95",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt94",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_patient_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "doctor_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_report_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt92",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "invalid_auth_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "invalid_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt93",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "patient_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "auth_token_invalid",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "report_id_other_user",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_user_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_doctor_id",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "valid_token",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "own_patientId",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "avt91",
+            "value": "",
+            "enabled": true
+        },
+        {
+            "key": "other_patientId",
+            "value": "",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2025-11-18T10:06:58.731623Z",
+    "_postman_exported_using": "Python Script"
+}

@@ -1,0 +1,4 @@
+# file: /home/chaincode/Desktop/acmeimp/microsecai/app/ACMEFuzzer.py
+# hypothesis_version: 6.138.2
+
+[-2147483648, -999999999, 1000, 999999999, 2147483647, '$ref', '/', ':', 'A', 'Authorization', 'Content-Type', 'DELETE', 'Invalid schema', 'PATCH', 'POST', 'PUT', '__main__', 'application/json', 'array', 'basicAuth', 'bearerAuth', 'body', 'boolean', 'components', 'content', 'endpoint', 'header', 'host', 'ignore', 'in', 'integer', 'items', 'json', 'key', 'language', 'method', 'mode', 'name', 'number', 'object', 'options', 'parameters', 'path', 'properties', 'query', 'raw', 'request', 'requestBody', 'schema', 'schemas', 'security', 'string', 'text', 'type', 'url', 'value', '{}', '🔥💀🚀']

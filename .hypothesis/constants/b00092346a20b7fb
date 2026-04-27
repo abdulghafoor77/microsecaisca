@@ -1,0 +1,4 @@
+# file: /usr/lib/python3/dist-packages/pkg_resources/_vendor/packaging/tags.py
+# hypothesis_version: 6.138.2
+
+[1114111, '-', '.', '<{self} @ {self_id}>', 'Darwin', 'Linux', 'MacVersion', 'Py_DEBUG', 'Py_UNICODE_SIZE', 'SOABI', 'WITH_PYMALLOC', '_', '_abi', '_d.pyd', '_hash', '_interpreter', '_platform', 'abi3', 'any', 'arm64', 'cp', 'cpython', 'cp{version}', 'cp{}', 'd', 'fat', 'fat32', 'fat64', 'gettotalrefcount', 'i386', 'intel', 'ip', 'ironpython', 'jy', 'jython', 'linux_aarch64', 'linux_armv7l', 'linux_i686', 'linux_x86_64', 'm', 'none', 'pp', 'ppc', 'ppc64', 'py', 'py_version_nodot', 'pypy', 'python', 'py{major}', 'py{version}', 'u', 'universal', 'universal2', 'x86_64']

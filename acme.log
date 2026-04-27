@@ -1,0 +1,87 @@
+[2025-11-18 13:10:04] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 13:10:04] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 13:10:04] [_internal.py:96] [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-11-18 13:10:04] [_internal.py:96] [INFO] - [33mPress CTRL+C to quit[0m
+[2025-11-18 13:10:04] [_internal.py:96] [INFO] -  * Restarting with stat
+[2025-11-18 13:10:07] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 13:10:07] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 13:10:07] [_internal.py:96] [WARNING] -  * Debugger is active!
+[2025-11-18 13:10:07] [_internal.py:96] [INFO] -  * Debugger PIN: 189-990-531
+[2025-11-18 13:37:19] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 13:37:19] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 13:37:19] [_internal.py:96] [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-11-18 13:37:19] [_internal.py:96] [INFO] - [33mPress CTRL+C to quit[0m
+[2025-11-18 13:37:19] [_internal.py:96] [INFO] -  * Restarting with stat
+[2025-11-18 13:37:22] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 13:37:22] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 13:37:22] [_internal.py:96] [WARNING] -  * Debugger is active!
+[2025-11-18 13:37:22] [_internal.py:96] [INFO] -  * Debugger PIN: 672-572-056
+[2025-11-18 13:41:35] [app.py:106] [INFO] - Request received !
+[2025-11-18 13:41:35] [app.py:117] [INFO] - Data extracted from request !
+[2025-11-18 13:41:35] [app.py:145] [INFO] - Processing request for vulernability test cases generation !
+[2025-11-18 13:41:35] [JSONHandler.py:109] [INFO] - ✅ String successfully saved to /home/chaincode/Desktop/acmeimp/microsecai/result/8dcfd09c-c329-44c0-a1ff-0f601a8be430/req_updatemedicalreport.yaml
+[2025-11-18 13:41:35] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 13:41:35] "POST /upload HTTP/1.1" 200 -
+[2025-11-18 14:06:04] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 14:06:04] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 14:06:04] [_internal.py:96] [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-11-18 14:06:04] [_internal.py:96] [INFO] - [33mPress CTRL+C to quit[0m
+[2025-11-18 14:06:04] [_internal.py:96] [INFO] -  * Restarting with stat
+[2025-11-18 14:06:08] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 14:06:08] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 14:06:08] [_internal.py:96] [WARNING] -  * Debugger is active!
+[2025-11-18 14:06:08] [_internal.py:96] [INFO] -  * Debugger PIN: 672-572-056
+[2025-11-18 14:07:51] [app.py:106] [INFO] - Request received !
+[2025-11-18 14:07:51] [app.py:117] [INFO] - Data extracted from request !
+[2025-11-18 14:07:51] [app.py:145] [INFO] - Processing request for vulernability test cases generation !
+[2025-11-18 14:07:51] [JSONHandler.py:109] [INFO] - ✅ String successfully saved to /home/chaincode/Desktop/acmeimp/microsecai/result/f23e0008-5795-4828-a693-3b059730d86e/req_updatemedicalreport.yaml
+[2025-11-18 14:07:52] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:07:52] "POST /upload HTTP/1.1" 200 -
+[2025-11-18 14:10:09] [FileDownloader.py:76] [INFO] - Serving file: /home/chaincode/Desktop/acmeimp/microsecai/result/f23e0008-5795-4828-a693-3b059730d86e/post-postman.json
+[2025-11-18 14:10:09] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:10:09] "GET /pm/f23e0008-5795-4828-a693-3b059730d86e HTTP/1.1" 200 -
+[2025-11-18 14:11:15] [FileDownloader.py:76] [INFO] - Serving file: /home/chaincode/Desktop/acmeimp/microsecai/result/f23e0008-5795-4828-a693-3b059730d86e/environment_variables.json
+[2025-11-18 14:11:15] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:11:15] "GET /ev/f23e0008-5795-4828-a693-3b059730d86e HTTP/1.1" 200 -
+[2025-11-18 14:20:38] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 14:20:38] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 14:20:38] [_internal.py:96] [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-11-18 14:20:38] [_internal.py:96] [INFO] - [33mPress CTRL+C to quit[0m
+[2025-11-18 14:20:38] [_internal.py:96] [INFO] -  * Restarting with stat
+[2025-11-18 14:20:42] [app.py:55] [INFO] - Successfully created database 'acme_db'!
+[2025-11-18 14:20:42] [app.py:64] [INFO] - Successfully created persistant schema !
+[2025-11-18 14:20:42] [_internal.py:96] [WARNING] -  * Debugger is active!
+[2025-11-18 14:20:42] [_internal.py:96] [INFO] -  * Debugger PIN: 672-572-056
+[2025-11-18 14:21:56] [app.py:106] [INFO] - Request received !
+[2025-11-18 14:21:56] [app.py:117] [INFO] - Data extracted from request !
+[2025-11-18 14:21:56] [app.py:145] [INFO] - Processing request for vulernability test cases generation !
+[2025-11-18 14:21:56] [JSONHandler.py:109] [INFO] - ✅ String successfully saved to /home/chaincode/Desktop/acmeimp/microsecai/result/344afee4-dc5c-4d65-9686-6f055255a110/req_updatemedicalreport.yaml
+[2025-11-18 14:21:56] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:21:56] "POST /upload HTTP/1.1" 200 -
+[2025-11-18 14:23:40] [FileDownloader.py:76] [INFO] - Serving file: /home/chaincode/Desktop/acmeimp/microsecai/result/344afee4-dc5c-4d65-9686-6f055255a110/post-postman.json
+[2025-11-18 14:23:40] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:23:40] "GET /pm/344afee4-dc5c-4d65-9686-6f055255a110 HTTP/1.1" 200 -
+[2025-11-18 14:23:50] [FileDownloader.py:76] [INFO] - Serving file: /home/chaincode/Desktop/acmeimp/microsecai/result/344afee4-dc5c-4d65-9686-6f055255a110/environment_variables.json
+[2025-11-18 14:23:50] [_internal.py:96] [INFO] - 127.0.0.1 - - [18/Nov/2025 14:23:50] "GET /ev/344afee4-dc5c-4d65-9686-6f055255a110 HTTP/1.1" 200 -
+[2025-11-26 14:48:33] [JSONHandler.py:184] [INFO] - ✅ String successfully read from /home/chaincode/Desktop/acmeimp/microsecai/input/post-postman.json
+[2025-11-26 15:41:16] [ACME.py:30] [INFO] - Initialized ACME with output_dir: /home/chaincode/Desktop/acmeimp/microsecai/result/bbc/
+[2025-11-26 15:41:16] [JSONHandler.py:184] [INFO] - ✅ String successfully read from /home/chaincode/Desktop/acmeimp/tets/pre-postman.json
+[2025-11-26 15:41:16] [ACME.py:366] [INFO] - Generating post-postman output with tagged test cases
+[2025-11-26 15:41:52] [ACME.py:30] [INFO] - Initialized ACME with output_dir: /home/chaincode/Desktop/acmeimp/microsecai/result/bbc/
+[2025-11-26 15:41:52] [JSONHandler.py:184] [INFO] - ✅ String successfully read from /home/chaincode/Desktop/acmeimp/tets/pre-postman.json
+[2025-11-26 15:41:52] [ACME.py:366] [INFO] - Generating post-postman output with tagged test cases
+[2025-12-03 14:58:34] [JSONHandler.py:184] [INFO] - ✅ String successfully read from /home/chaincode/Desktop/acmeimp/microsecai/input/post-postman.json
+[2025-12-17 16:13:38] [_internal.py:96] [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.132.131:5000
+[2025-12-17 16:13:38] [_internal.py:96] [INFO] - [33mPress CTRL+C to quit[0m
+[2025-12-17 16:13:38] [_internal.py:96] [INFO] -  * Restarting with stat
+[2025-12-17 16:13:45] [_internal.py:96] [WARNING] -  * Debugger is active!
+[2025-12-17 16:13:45] [_internal.py:96] [INFO] -  * Debugger PIN: 868-567-308

@@ -1,0 +1,318 @@
+{
+      "name": "Valid Report ID (Owned)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/{{owned_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "{{owned_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Valid Report ID (Not Owned)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/{{other_user_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "{{other_user_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Invalid Type (String)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/invalidStringID",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "invalidStringID"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Special Characters",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/%40%23%24%25%5E%26*()",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "@#$%^&*()"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Empty Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            ""
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Very Large Number (Edge Case)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/9999999999999999999999999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "9999999999999999999999999"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Negative Number",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/-12345",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "-12345"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Zero",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "0"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Minimum Positive Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Report ID - Decimal Value",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_valid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/123.45",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "123.45"
+          ]
+        }
+      }
+    },
+    {
+      "name": "No Authorization Header",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/{{owned_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "{{owned_report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Invalid Authorization Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{auth_token_invalid}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/demo/vuln/report/{{owned_report_id}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "demo",
+            "vuln",
+            "report",
+            "{{owned_report_id}}"
+          ]
+        }
+      }
+    }
+  
