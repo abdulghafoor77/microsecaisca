@@ -42,7 +42,7 @@ class ACMEFuzzer:
         return [
             -1, 0, 1,
             2147483647, -2147483648,
-            random.randint(-999999999, 999999999), # nosec B311
+            random.randint(-999999999, 999999999), # nosec
             st.integers().example(),  # Hypothesis edge int
             st.floats(allow_nan=False, allow_infinity=False).example()
         ]

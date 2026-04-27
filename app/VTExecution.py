@@ -1,4 +1,4 @@
-import subprocess # nosec B404
+import subprocess # nosec
 import json
 from pathlib import Path
 
@@ -39,7 +39,7 @@ class NewmanRunner:
             print(f"Running Newman collection: {self.collection_path.name}")
             
             print(f"{command}")
-            subprocess.run(command, check=True) # nosec B603
+            subprocess.run(command, check=True) # nosec
 
             if self.report_file.is_file():
                 with open(self.report_file, "r") as f:

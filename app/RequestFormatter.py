@@ -6,6 +6,6 @@ class RequestFormatter(logging.Formatter):
         if has_request_context():
             record.request_token = getattr(g, 'request_token', 'anon') 
         else:
-            record.request_token = 'no-request' # nosec B105
+            record.request_token = 'no-request' # nosec
         return super().format(record)
 
