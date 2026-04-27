@@ -1,5 +1,5 @@
 import json
-import random
+import secrets
 import string
 from faker import Faker
 from hypothesis import strategies as st
@@ -29,7 +29,7 @@ class ACMEFuzzer:
         return [
             self.fake.name(),
             self.fake.email(),
-            "".join(random.choices(string.ascii_letters, k=10)),
+            "".join(secrets.choice(string.ascii_letters, k=10)),
             "",
             "🔥💀🚀",
             "A" * 1000,
