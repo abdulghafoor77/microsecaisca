@@ -1,0 +1,4 @@
+# CVE-2026-3219 pip
+# Reason: false positive in CI scan, no fixed version available yet
+# Review date: 2026-07-01
+CVE-2026-3219 pip
