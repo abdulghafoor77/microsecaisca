@@ -65,7 +65,7 @@ class ACMEFuzzer:
             return [[v] for v in self.fuzz_value(schema.get("items", {"type": "string"}))]
         elif t == "object":
             return [
-                {k: random.choice(self.fuzz_value(v))
+                {k: secrets.choice(self.fuzz_value(v))
                  for k, v in schema.get("properties", {}).items()}
             ]
         else:
@@ -132,7 +132,7 @@ class ACMEFuzzer:
 
                     # Path & query parameters
                     for param in params:
-                        fuzzed_val = random.choice(self.fuzz_value(param.get("schema", {"type": "string"})))
+                        fuzzed_val = secrets.choice(self.fuzz_value(param.get("schema", {"type": "string"})))
                         if param["in"] == "path":
                             request["url"]["path"] = [
                                 str(fuzzed_val) if p.strip("{}") == param["name"] else p
@@ -158,7 +158,7 @@ class ACMEFuzzer:
                                 if payload_strategy is not None:
                                     fuzzed_body = payload_strategy.example()
                                     #=============================================
-                                    #fuzzed_body = random.choice(self.fuzz_value(component))
+                                    #fuzzed_body = secrets.choice(self.fuzz_value(component))
                                     request["body"] = {
                                     "mode": "raw",
                                     "raw": json.dumps(fuzzed_body),

@@ -59,7 +59,7 @@ class PostmanFuzzer:
             return [[v] for v in self.fuzz_value(schema.get("items", {"type": "string"}))]
         elif t == "object":
             return [
-                {k: random.choice(self.fuzz_value(v))
+                {k: secrets.choice(self.fuzz_value(v))
                  for k, v in schema.get("properties", {}).items()}
             ]
         else:
@@ -103,7 +103,7 @@ class PostmanFuzzer:
 
                     # Path & query parameters
                     for param in params:
-                        fuzzed_val = random.choice(self.fuzz_value(param.get("schema", {"type": "string"})))
+                        fuzzed_val = secrets.choice(self.fuzz_value(param.get("schema", {"type": "string"})))
                         if param["in"] == "path":
                             request["url"]["path"] = [
                                 str(fuzzed_val) if p.strip("{}") == param["name"] else p
@@ -119,7 +119,7 @@ class PostmanFuzzer:
 
                     # Request body fuzzing
                     if body_schema:
-                        fuzzed_body = random.choice(self.fuzz_value(body_schema))
+                        fuzzed_body = secrets.choice(self.fuzz_value(body_schema))
                         request["body"] = {
                             "mode": "raw",
                             "raw": json.dumps(fuzzed_body),
