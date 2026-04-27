@@ -1,5 +1,6 @@
 import json
 import secrets
+import random
 import string
 from faker import Faker
 from hypothesis import strategies as st
@@ -37,11 +38,11 @@ class ACMEFuzzer:
         ]
 
     def fuzz_number_values(self):
-        """Combine random + Hypothesis int strategies"""
+        """Combine random + Hypothesis int strategies""" 
         return [
             -1, 0, 1,
             2147483647, -2147483648,
-            random.randint(-999999999, 999999999),
+            random.randint(-999999999, 999999999), # nosec B311
             st.integers().example(),  # Hypothesis edge int
             st.floats(allow_nan=False, allow_infinity=False).example()
         ]
