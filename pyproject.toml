@@ -1,6 +1,0 @@
-[tool.pip-audit]
-ignore-vuln = [
-    "CVE-2026-3219",  # false positive in CI scan, no fixed version available yet — Review: 2026-07-01
-]
-
-

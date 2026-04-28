@@ -1,4 +1,4 @@
-name: Secure-by-Design
+name: Secure-by-Design (SAST, SCA tools)
 
 on:
   push:
